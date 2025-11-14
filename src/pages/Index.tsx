@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect, useRef } from "react";
 import type { LucideIcon } from "lucide-react";
 import { ArrowLeft, ArrowRight, ArrowUpRight, Calendar, Clock, Globe, Mail, Menu, Plus, ThumbsUp } from "lucide-react";
 
@@ -43,12 +43,13 @@ const CONTACT_EMAIL = "hello@outlierstructures.com";
 const CONTACT_LINK = `mailto:${CONTACT_EMAIL}?subject=Structural%20Bid%20Request`;
 const heroImage = "https://framerusercontent.com/images/FVyQv90OMyWJQAyRfCesHadT8Q.png?width=2400";
 
-const trustedLogos = [
-  "https://framerusercontent.com/images/jNLKI8Afm3YrskaM6svaNTZoci0.png?width=1200",
-  "https://framerusercontent.com/images/5zv3VvO3sBm9IGXX3o2abAD0LBI.png?width=1200",
-  "https://framerusercontent.com/images/ZqAJwL1mPj1gL2AtITvubebNl8.png?width=1200",
-  "https://framerusercontent.com/images/HduE0Z6XTGa3r4dCTGPpGoAFkBI.png?width=1600",
-  "https://framerusercontent.com/images/bdSG1gTCDTSMHQAPVui8ujlcWkc.png?width=1600",
+const logoPlaceholders = [
+  "Partner 1",
+  "Partner 2", 
+  "Partner 3",
+  "Partner 4",
+  "Partner 5",
+  "Partner 6",
 ];
 
 const statHighlights: { icon: LucideIcon; value: string; label: string }[] = [
@@ -259,18 +260,23 @@ const Index = () => {
         <div className="grain-surface absolute inset-0 rounded-none" />
       </div>
 
-      <div className="relative mx-auto flex max-w-6xl flex-col gap-20 px-4 pb-24 pt-8 sm:px-6 lg:px-0 lg:pt-14">
+      <SiteHeader />
+      
+      <div className="relative">
         <HeroSection />
         <PartnerStrip />
-        <ExperienceSection />
-        <ServicesSection activeService={activeService} currentService={currentService} onChange={setActiveService} />
-        <ProcessSection />
-        <FeaturedProjects currentProject={currentProject} activeIndex={projectIndex} onNavigate={nextProject} />
-        <TestimonialsSection testimonial={currentTestimonial} activeIndex={testimonialIndex} onNavigate={nextTestimonial} />
-        <TeamSection />
-        <AwardsSection />
-        <NewsSection />
-        <FooterSection />
+        
+        <div className="relative mx-auto flex max-w-6xl flex-col gap-20 px-4 pb-24 pt-20 sm:px-6 lg:px-0">
+          <ExperienceSection />
+          <ServicesSection activeService={activeService} currentService={currentService} onChange={setActiveService} />
+          <ProcessSection />
+          <FeaturedProjects currentProject={currentProject} activeIndex={projectIndex} onNavigate={nextProject} />
+          <TestimonialsSection testimonial={currentTestimonial} activeIndex={testimonialIndex} onNavigate={nextTestimonial} />
+          <TeamSection />
+          <AwardsSection />
+          <NewsSection />
+          <FooterSection />
+        </div>
       </div>
     </div>
   );
@@ -278,34 +284,44 @@ const Index = () => {
 
 export default Index;
 
-const HeroSection = () => (
-  <section className="relative overflow-hidden rounded-[48px] border border-white/10 bg-black/80">
-    <img src={heroImage} alt="Hero" className="absolute inset-0 h-full w-full object-cover" loading="lazy" />
-    <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/40 to-black/95" />
-    <div className="relative z-10 flex min-h-[600px] flex-col justify-between gap-8 p-8 sm:min-h-[700px] sm:p-12 lg:min-h-[750px] lg:p-16">
-      {/* Top Meta Bar */}
-      <div className="flex items-center justify-between gap-4 text-[0.65rem] font-medium uppercase tracking-[0.45em] text-white/60">
-        <div className="flex items-center gap-2 text-white/70">
-          <Menu className="size-4" />
-          <span>Working Spaces</span>
-        </div>
-        <span className="text-white/90">OUTLIER STRUCTURES</span>
-        <a href={CONTACT_LINK} className="flex items-center gap-2 text-white/80 transition hover:text-white">
-          <Mail className="size-4" />
-          <span className="hidden sm:inline">{CONTACT_EMAIL}</span>
+const SiteHeader = () => (
+  <header className="sticky top-0 z-50 border-b border-white/10 bg-[#0f0f0d]/98 backdrop-blur-md">
+    <div className="relative flex items-center justify-between px-4 py-6 text-sm font-medium uppercase tracking-[0.3em] text-white/70 sm:px-6 lg:px-8">
+      <div className="flex items-center gap-4 text-white/80">
+        <Menu className="size-7" />
+        <span>Working Spaces</span>
+      </div>
+      <span className="absolute left-1/2 -translate-x-1/2 text-base font-semibold text-white/95">OUTLIER STRUCTURES</span>
+      <div className="flex items-center gap-6">
+        <a href={CONTACT_LINK} className="text-white/80 transition hover:text-white" aria-label="Email us">
+          <Mail className="size-7" />
+        </a>
+        <a 
+          href={CONTACT_LINK}
+          className="rounded-lg bg-gradient-to-r from-[hsl(22_96%_60%)] to-[hsl(32_95%_72%)] px-7 py-3.5 text-sm font-bold uppercase tracking-[0.35em] text-[hsl(23_30%_12%)] shadow-[0_12px_32px_hsl(22_96%_40%_/_0.35)] transition hover:scale-[1.02]"
+        >
+          Get Bid
         </a>
       </div>
+    </div>
+  </header>
+);
 
+const HeroSection = () => (
+  <section className="relative w-full overflow-hidden bg-black">
+    <img src={heroImage} alt="Hero" className="absolute inset-0 h-full w-full object-cover" loading="lazy" />
+    <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/40 to-black/95" />
+    <div className="relative z-10 flex min-h-[600px] flex-col justify-center gap-12 px-6 py-20 sm:min-h-[700px] sm:px-12 lg:min-h-[750px] lg:px-16">
       {/* Hero Content */}
       <div className="text-center text-white">
-        <p className="text-[0.65rem] uppercase tracking-[0.9em] text-white/50">Shaping skylines with</p>
+        <p className="text-[0.65rem] uppercase tracking-[0.9em] text-white/50">Outlier Structures Is</p>
         <div className="mt-6 space-y-3">
-          <h1 className="text-5xl font-semibold uppercase leading-[1.1] tracking-[0.12em] sm:text-6xl lg:text-7xl">
+          <h1 className="text-5xl font-normal uppercase leading-[1.1] sm:text-6xl lg:text-7xl">
             SHAPING SKYLINES WITH
           </h1>
-          <div className="flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4">
+          <div className="flex flex-col items-center justify-center gap-3 text-5xl font-normal uppercase leading-[1.1] sm:flex-row sm:gap-4 sm:text-6xl lg:text-7xl">
             <span className="hero-highlight-box">BOLD</span>
-            <span className="text-5xl font-semibold uppercase leading-[1.1] tracking-[0.12em] sm:text-6xl lg:text-7xl">VISION</span>
+            <span>VISION</span>
           </div>
         </div>
         <p className="mx-auto mt-8 max-w-2xl text-base leading-relaxed text-white/80 sm:text-lg">
@@ -336,23 +352,81 @@ const HeroSection = () => (
   </section>
 );
 
-const PartnerStrip = () => (
-  <section className="rounded-[36px] border border-white/5 bg-black/30 px-4 py-4 sm:px-6">
-    <div className="flex flex-wrap items-center justify-between gap-4">
-      {trustedLogos.map((logo, index) => (
-        <div key={logo} className="flex items-center gap-4 text-white/30">
-          <img src={logo} alt="Trusted partner" className="h-6 w-auto opacity-60 grayscale" loading="lazy" />
-          {index < trustedLogos.length - 1 && <span className="hidden h-4 w-px bg-white/15 sm:block" />}
+const PartnerStrip = () => {
+  // Triple the array for seamless infinite scroll
+  const allPlaceholders = [...logoPlaceholders, ...logoPlaceholders, ...logoPlaceholders];
+  
+  return (
+    <section className="w-full overflow-hidden border-y border-white/5 bg-[#0f0f0d] py-8">
+      <div className="logo-scroll-container">
+        <div className="logo-scroll-track">
+          {allPlaceholders.map((placeholder, index) => (
+            <div key={`placeholder-${index}`} className="logo-scroll-item flex items-center">
+              <div className="flex h-10 w-40 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-xs uppercase tracking-widest text-white/30">
+                {placeholder}
+              </div>
+              <span className="mx-16 h-8 w-px bg-white/10" />
+            </div>
+          ))}
         </div>
-      ))}
+      </div>
+    </section>
+  );
+};
+
+const CountUp = ({ value, duration = 2000 }: { value: string; duration?: number }) => {
+  const [count, setCount] = useState(0);
+  const [hasAnimated, setHasAnimated] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  const numericValue = parseInt(value.replace(/[^0-9]/g, ""), 10) || 0;
+  const suffix = value.replace(/[0-9]/g, "");
+
+  useEffect(() => {
+    if (!ref.current || hasAnimated) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setHasAnimated(true);
+          const start = 0;
+          const end = numericValue;
+          const startTime = Date.now();
+
+          const animate = () => {
+            const now = Date.now();
+            const progress = Math.min((now - startTime) / duration, 1);
+            const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+            setCount(Math.floor(easeOutQuart * (end - start) + start));
+
+            if (progress < 1) {
+              requestAnimationFrame(animate);
+            }
+          };
+
+          requestAnimationFrame(animate);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.3 }
+    );
+
+    observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, [numericValue, duration, hasAnimated]);
+
+  return (
+    <div ref={ref}>
+      {count}
+      {suffix}
     </div>
-  </section>
-);
+  );
+};
 
 const ExperienceSection = () => (
-  <section className="rounded-[48px] border border-white/10 bg-black/30 p-2">
-    <div className="paper-surface rounded-[40px] p-8 sm:p-12">
-      <div className="grid gap-10 lg:grid-cols-[1.1fr,0.9fr]">
+  <section className="rounded-[56px] border border-white/10 bg-black/30 p-3">
+    <div className="paper-surface rounded-[48px] p-10 sm:p-14 lg:p-16">
+      <div className="grid gap-14 lg:grid-cols-[1.1fr,0.9fr]">
         <div>
           <SectionHeading
             eyebrow="Legacy concrete"
@@ -360,37 +434,42 @@ const ExperienceSection = () => (
             description="Trusted partners delivering structural concrete for podiums, parking structures, and seismic retrofits across Southern California."
             tone="dark"
           />
-          <p className="mt-8 text-base text-black/70">
+          <p className="mt-10 text-lg leading-relaxed text-black/70">
             We embed alongside your team from preconstruction to turnover—aligning schedules, inspection checkpoints, and safety protocols with the crews that actually pour the work.
           </p>
-          <div className="mt-10 grid gap-4 sm:grid-cols-2">
-            <div className="rounded-3xl bg-black text-white p-5">
-              <p className="text-4xl font-semibold">50+</p>
-              <p className="text-sm uppercase tracking-[0.35em] text-white/70">Engineers & builders</p>
-              <p className="mt-3 text-sm text-white/70">People who only speak structural concrete, ready to drop into your precon calls.</p>
+          <div className="mt-12 grid gap-6 sm:grid-cols-2">
+            <div className="rounded-[32px] bg-black p-8 text-white">
+              <p className="text-5xl font-semibold"><CountUp value="50+" /></p>
+              <p className="mt-2 text-base uppercase tracking-[0.35em] text-white/70">Engineers & builders</p>
+              <p className="mt-4 text-base leading-relaxed text-white/70">People who only speak structural concrete, ready to drop into your precon calls.</p>
             </div>
-            <div className="grid gap-4">
-              <img src="https://framerusercontent.com/images/gQJjSNrLhYTUTDGcnrI63gYNc.png?width=1600" alt="Structure detail" className="grain-surface h-32 w-full rounded-3xl object-cover" />
-              <img src="https://framerusercontent.com/images/ADTZ3vdyrEoaV3vHZUb6yuLtjkw.png?width=1600" alt="Modern building" className="grain-surface h-32 w-full rounded-3xl object-cover" />
+            <div className="grid gap-6">
+              <img src="https://framerusercontent.com/images/gQJjSNrLhYTUTDGcnrI63gYNc.png?width=1600" alt="Structure detail" className="grain-surface h-40 w-full rounded-[28px] object-cover" />
+              <img src="https://framerusercontent.com/images/ADTZ3vdyrEoaV3vHZUb6yuLtjkw.png?width=1600" alt="Modern building" className="grain-surface h-40 w-full rounded-[28px] object-cover" />
             </div>
           </div>
         </div>
-        <div className="flex flex-col justify-between gap-8 rounded-[36px] border border-black/5 bg-white/70 p-6">
-          <p className="text-base text-black/70">
-            Structura offers more than just concrete—it’s thoughtful design, innovation, and schedule-aligned execution built for real-world constraints.
+        <div className="flex flex-col justify-between gap-10 rounded-[40px] border border-black/5 bg-white/70 p-8">
+          <p className="text-lg leading-relaxed text-black/70">
+            Structura offers more than just concrete—it's thoughtful design, innovation, and schedule-aligned execution built for real-world constraints.
           </p>
-          <div className="grid gap-4 sm:grid-cols-2">
+          <div className="grid gap-6 sm:grid-cols-2">
             {statHighlights.map((stat) => (
-              <div key={stat.label} className="flex items-start gap-3">
-                <stat.icon className="mt-1 size-5 text-black/60" />
+              <div key={stat.label} className="flex items-start gap-4">
+                <stat.icon className="mt-1 size-6 text-black/60" />
                 <div>
-                  <p className="text-2xl font-semibold text-black">{stat.value}</p>
-                  <p className="text-sm uppercase tracking-[0.4em] text-black/50">{stat.label}</p>
+                  <p className="text-3xl font-semibold text-black"><CountUp value={stat.value} /></p>
+                  <p className="mt-1 text-sm uppercase tracking-[0.4em] text-black/50">{stat.label}</p>
                 </div>
               </div>
             ))}
           </div>
-          <PrimaryCTA label="Get a project review" dark />
+          <a 
+            href={CONTACT_LINK}
+            className="inline-flex items-center justify-center gap-2 rounded-lg bg-black px-8 py-4 text-base font-bold uppercase tracking-[0.3em] text-white transition hover:scale-[1.02]"
+          >
+            Get a project review <ArrowUpRight className="size-5" />
+          </a>
         </div>
       </div>
     </div>
@@ -404,47 +483,57 @@ type ServicesSectionProps = {
 };
 
 const ServicesSection = ({ activeService, currentService, onChange }: ServicesSectionProps) => (
-  <section id="services" className="rounded-[48px] border border-white/10 bg-black/30 p-6 sm:p-10">
-    <div className="grid gap-10 lg:grid-cols-[360px,1fr]">
-      <div className="space-y-6">
+  <section id="services" className="rounded-[56px] border border-white/10 bg-black/30 p-8 sm:p-12 lg:p-14">
+    <div className="grid gap-14 lg:grid-cols-[420px,1fr]">
+      <div className="space-y-8">
         <SectionHeading
           eyebrow="What we do"
           title={["Smart solutions for every", { highlight: "project" }]}
           description="Pick your structural challenge. We line up the crews, sequencing, and inspection-ready documents to execute it."
         />
-        <a href={CONTACT_LINK} className="inline-flex items-center gap-2 text-sm font-semibold text-white transition hover:text-[hsl(var(--primary))]">
-          Request a structural bid <ArrowUpRight className="size-4" />
+        <a href={CONTACT_LINK} className="inline-flex items-center gap-2 text-base font-bold text-white transition hover:text-[hsl(var(--primary))]">
+          Request a structural bid <ArrowUpRight className="size-5" />
         </a>
-        <div className="divide-y divide-white/10 rounded-[32px] border border-white/10">
+        <div className="divide-y divide-white/10 rounded-[36px] border border-white/10">
           {services.map((service) => (
             <button
               key={service.slug}
               onClick={() => onChange(service.slug)}
               className={cn(
-                "flex w-full items-center justify-between gap-4 px-5 py-4 text-left transition",
+                "flex w-full items-center justify-between gap-6 px-6 py-5 text-left transition",
                 activeService === service.slug ? "bg-white/5" : "hover:bg-white/5",
               )}
             >
               <div>
-                <p className="text-[0.6rem] uppercase tracking-[0.6em] text-white/40">{service.number}</p>
-                <p className="text-lg font-semibold text-white">{service.title}</p>
+                <p className="text-xs uppercase tracking-[0.6em] text-white/40">{service.number}</p>
+                <p className="mt-1 text-xl font-semibold text-white">{service.title}</p>
               </div>
-              <Plus className={cn("size-4", activeService === service.slug ? "text-white" : "text-white/40")} />
+              <Plus className={cn("size-5", activeService === service.slug ? "text-white" : "text-white/40")} />
             </button>
           ))}
         </div>
       </div>
-      <div className="space-y-6 rounded-[32px] border border-white/10 bg-[#050505]/80 p-6">
-        <img src={currentService.image} alt={currentService.title} className="grain-surface h-64 w-full rounded-[28px] object-cover" loading="lazy" />
-        <div className="space-y-4">
-          <p className="text-xs uppercase tracking-[0.6em] text-white/40">{currentService.category}</p>
-          <h3 className="text-2xl font-semibold text-white">{currentService.title}</h3>
-          <p className="text-white/80">{currentService.description}</p>
-          <p className="text-white/60">{currentService.expertise}</p>
+      <div className="space-y-8 rounded-[36px] border border-white/10 bg-[#050505]/80 p-8">
+        <img src={currentService.image} alt={currentService.title} className="grain-surface h-80 w-full rounded-[32px] object-cover" loading="lazy" />
+        <div className="space-y-5">
+          <p className="text-sm uppercase tracking-[0.6em] text-white/40">{currentService.category}</p>
+          <h3 className="text-3xl font-semibold text-white">{currentService.title}</h3>
+          <p className="text-lg leading-relaxed text-white/80">{currentService.description}</p>
+          <p className="text-base leading-relaxed text-white/60">{currentService.expertise}</p>
         </div>
-        <div className="flex flex-wrap gap-3">
-          <PrimaryCTA label="Get a structural bid" />
-          <SecondaryCTA label="Download scope" />
+        <div className="flex flex-wrap gap-4">
+          <a 
+            href={CONTACT_LINK}
+            className="inline-flex items-center gap-2 rounded-lg bg-white px-7 py-4 text-base font-bold uppercase tracking-[0.25em] text-black transition hover:scale-[1.02]"
+          >
+            Get a structural bid <ArrowUpRight className="size-5" />
+          </a>
+          <a 
+            href={CONTACT_LINK}
+            className="inline-flex items-center gap-2 rounded-lg border border-white/40 px-7 py-4 text-base font-semibold uppercase tracking-[0.25em] text-white/90 transition hover:border-white hover:bg-white/10"
+          >
+            Download scope <ArrowUpRight className="size-5" />
+          </a>
         </div>
       </div>
     </div>
