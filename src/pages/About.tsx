@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-import { ArrowLeft, ArrowUpRight, Target, Shield, Users, TrendingUp } from "lucide-react";
+import { ArrowUpRight, Target, Shield, Users, TrendingUp } from "lucide-react";
+import { SharedHeader } from "@/components/SharedHeader";
 
 const About = () => {
   const values = [
@@ -35,17 +36,17 @@ const About = () => {
         <div className="grain-surface absolute inset-0 rounded-none" />
       </div>
 
-      <SiteHeader />
+      <SharedHeader />
 
       <div className="relative">
         {/* Hero Section */}
         <section className="relative mx-auto max-w-4xl px-4 py-20 text-center sm:px-6 sm:py-32">
           <p className="text-xs font-semibold uppercase tracking-[0.7em] text-white/40">About us</p>
           <h1 className="mt-4 text-4xl font-semibold text-white sm:text-6xl">
-            Removing chaos from <span className="highlight-pill">structural concrete</span> bids
+            Elite matchmaking for <span className="highlight-pill">ultra-luxury</span> structural concrete
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-white/80">
-            Outlier Structures exists to connect serious projects with qualified structural concrete crews — transparently, efficiently, and without the usual randomness.
+            Outlier Structures connects ultra-luxury custom home projects and major commercial developments with elite structural concrete contractors specializing in $200k-$5M structural packages.
           </p>
         </section>
 
@@ -56,16 +57,16 @@ const About = () => {
               <h2 className="text-2xl font-semibold text-black sm:text-3xl">Our story</h2>
               <div className="mt-6 space-y-4 text-base leading-relaxed text-black/70 sm:text-lg">
                 <p>
-                  Outlier Structures was founded to solve a specific problem: structural concrete bids are often chaotic, slow, and unpredictable. General contractors, developers, and serious homeowners waste weeks chasing down crews, only to receive vague proposals or get ghosted entirely.
+                  Outlier Structures was founded to solve a specific problem in the ultra-luxury and commercial structural concrete market: finding elite contractors capable of executing high-complexity $200k-$5M structural packages is difficult and time-consuming.
                 </p>
                 <p>
-                  We leverage deep experience and established relationships with reputable structural concrete contractors across Ventura County, the Conejo Valley, and the West San Fernando Valley. These aren't random Craigslist leads — they're licensed, insured crews with proven track records on custom homes, ADUs, retaining walls, and podium slabs.
+                  We leverage deep experience and established relationships with elite structural concrete contractors across Ventura County, Conejo Valley, West San Fernando Valley, Malibu, and Topanga. These aren't random leads — they're licensed, insured crews with proven track records on ultra-luxury custom homes, complex hillside projects, and major commercial developments.
                 </p>
                 <p>
-                  Our role is simple: we're a neutral matchmaking and coordination layer. We don't sell leads, we don't take a cut of your bid, and we don't pressure you into working with anyone. We connect projects with the right crews, facilitate introductions, and stay involved at a high level to ensure things move forward.
+                  Our role is simple: we're a neutral matchmaking and coordination layer for high-value projects. We don't sell leads, we don't take a cut of your bid, and we don't pressure you into working with anyone. We connect projects with elite crews capable of handling the complexity and scale of your scope.
                 </p>
                 <p>
-                  If you're tired of the runaround and want a straightforward path to quality structural concrete bids, we're here to help.
+                  If you're planning an ultra-luxury custom home, complex hillside project, or commercial development and need access to elite structural concrete contractors, we're here to help.
                 </p>
               </div>
             </div>
@@ -126,9 +127,9 @@ const About = () => {
                   <div className="flex size-14 items-center justify-center rounded-[20px] bg-[hsl(var(--primary))] text-2xl font-bold text-white">
                     H
                   </div>
-                  <h3 className="text-lg font-semibold text-black">Serious Homeowners</h3>
+                  <h3 className="text-lg font-semibold text-black">Ultra-Luxury Homeowners</h3>
                   <p className="text-sm leading-relaxed text-black/70">
-                    Building custom homes, ADUs, or major additions and need qualified structural concrete contractors.
+                    Building ultra-luxury custom homes with complex structural requirements, hillside challenges, or high-end architectural concrete elements.
                   </p>
                 </div>
               </div>
@@ -140,13 +141,13 @@ const About = () => {
         <section className="relative mx-auto max-w-5xl px-4 pb-16 sm:px-6">
           <div className="rounded-[48px] border border-white/10 bg-gradient-to-b from-[#141414] to-[#050505] p-8 text-center sm:p-16">
             <h2 className="text-3xl font-semibold text-white sm:text-4xl">
-              Ideal project size: $50k–$500k
+              Ideal project size: $200k–$5M
             </h2>
             <p className="mx-auto mt-4 max-w-2xl text-lg leading-relaxed text-white/80">
-              We focus on mid-to-large structural concrete scopes. Custom home foundations, major retaining walls, ADU slabs, podium decks, and similar projects where quality and reliability matter.
+              We specialize in large structural concrete scopes for ultra-luxury custom homes, complex hillside sites, and commercial developments. Foundation packages, major retaining systems, podium slabs, and high-complexity structural work where execution quality is paramount.
             </p>
             <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-white/60">
-              Smaller jobs (under $50k) may not be a good fit for our network. Very large commercial projects ($1M+) may require specialized bidding processes we don't currently support.
+              Smaller residential projects (under $200k structural scope) are typically better served by general contractors. Our network specializes in high-complexity, high-value work.
             </p>
           </div>
         </section>
@@ -184,23 +185,3 @@ const About = () => {
 };
 
 export default About;
-
-const SiteHeader = () => (
-  <header className="sticky top-0 z-50 border-b border-white/10 bg-[#0f0f0d]/98 backdrop-blur-md">
-    <div className="relative flex items-center justify-between px-4 py-6 text-sm font-medium uppercase tracking-[0.3em] text-white/70 sm:px-6 lg:px-8">
-      <Link to="/" className="flex items-center gap-4 text-white/80 transition hover:text-white">
-        <ArrowLeft className="size-6" />
-        <span>Back to home</span>
-      </Link>
-      <Link to="/" className="absolute left-1/2 -translate-x-1/2 text-base font-semibold text-white/95">
-        OUTLIER STRUCTURES
-      </Link>
-      <Link
-        to="/bid"
-        className="rounded-lg bg-gradient-to-r from-[hsl(22_96%_60%)] to-[hsl(32_95%_72%)] px-7 py-3.5 text-sm font-bold uppercase tracking-[0.35em] text-[hsl(23_30%_12%)] shadow-[0_12px_32px_hsl(22_96%_40%_/_0.35)] transition hover:scale-[1.02]"
-      >
-        Get Bid
-      </Link>
-    </div>
-  </header>
-);

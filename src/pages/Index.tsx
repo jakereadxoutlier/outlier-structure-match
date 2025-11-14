@@ -1,9 +1,10 @@
 import { useMemo, useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import type { LucideIcon } from "lucide-react";
-import { ArrowLeft, ArrowRight, ArrowUpRight, Calendar, Clock, Globe, Mail, MapPin, Menu, Plus, ThumbsUp, Users } from "lucide-react";
+import { ArrowLeft, ArrowRight, ArrowUpRight, Calendar, Clock, Globe, Mail, MapPin, Menu, Plus, ThumbsUp, Users, Building2, TrendingUp } from "lucide-react";
 
 import { cn } from "@/lib/utils";
+import { SharedHeader } from "@/components/SharedHeader";
 
 type HeadingChunk = string | { highlight: string };
 
@@ -54,66 +55,66 @@ const logoPlaceholders = [
 ];
 
 const statHighlights: { icon: LucideIcon; value: string; label: string }[] = [
-  { icon: Users, value: "50+", label: "Vetted contractors" },
-  { icon: Clock, value: "24-48h", label: "Initial response" },
-  { icon: MapPin, value: "10+", label: "Cities served" },
-  { icon: ThumbsUp, value: "$50k-500k", label: "Project range" },
+  { icon: Building2, value: "$200k-5M", label: "Project range" },
+  { icon: Users, value: "Elite", label: "Contractor network" },
+  { icon: TrendingUp, value: "Ultra-luxury", label: "Specialization" },
+  { icon: MapPin, value: "5 regions", label: "Coverage area" },
 ];
 
 const services: Service[] = [
   {
-    slug: "custom-homes",
+    slug: "ultra-luxury-homes",
     number: "001",
-    title: "Custom Home Foundations & Slabs",
-    category: "Residential",
+    title: "Ultra-Luxury Home Structural Packages",
+    category: "High-end residential",
     description:
-      "Complete foundation systems for custom homes and luxury residences. From site prep through final slab placement, matched with crews who specialize in high-end residential work.",
+      "Complete structural systems for ultra-luxury custom homes: foundations, slabs, retaining, basements, and complex architectural concrete. Projects typically $500k-$3M structural scope.",
     expertise:
-      "Our contractors understand architectural detailing, waterproofing, and finish-grade coordination for homes where quality and precision matter.",
+      "Elite crews experienced with architectural concrete, exposed aggregate, complex forming, waterproofing, and finish-grade coordination for estates where quality is paramount.",
     image: "https://framerusercontent.com/images/dImXQCCyieTCNnOOGH9tSqckO0.png?width=1600",
   },
   {
-    slug: "retaining",
+    slug: "hillside-complex",
     number: "002",
-    title: "Retaining Walls & Hillside Stabilization",
-    category: "Site work",
+    title: "Hillside & High-Complexity Sites",
+    category: "Challenging terrain",
     description:
-      "Engineered retaining walls, hillside stabilization, and slope protection for challenging terrain across Ventura County and Malibu hillsides.",
+      "Engineered retaining systems, caissons, grade beams, and slope stabilization for challenging hillside sites in Malibu, Topanga, and canyon properties. Typical projects $300k-$2M.",
     expertise:
-      "Specialized crews experienced with hillside access, drainage integration, and seismic reinforcement for high-value coastal and canyon properties.",
+      "Specialized crews with hillside access expertise, seismic reinforcement, drainage integration, and geotechnical coordination for high-value coastal and canyon estates.",
     image: "https://framerusercontent.com/images/5f8pIe6jceTfDhrYmTvIbWcU6Q.png?width=1600",
   },
   {
-    slug: "adu-additions",
+    slug: "commercial",
     number: "003",
-    title: "ADU & Addition Foundations",
-    category: "Residential expansion",
+    title: "Commercial Structural Concrete",
+    category: "Commercial & mixed-use",
     description:
-      "Foundation and structural concrete work for accessory dwelling units, major additions, and residential expansions. Coordinated with existing structures and utilities.",
+      "Structural packages for offices, retail, hospitality, and institutional projects. Podium slabs, parking structures, tilt-up, and large-scale flatwork. Projects $400k-$5M structural scope.",
     expertise:
-      "Crews who understand tight urban lots, setback constraints, and phased construction so existing homes stay livable during the build.",
+      "Coordination of post-tension systems, MEP blocking, inspection sequences, and phased construction to keep commercial timelines on track.",
     image: "https://framerusercontent.com/images/9jSgyFhNM7HwVGIR8VBmInmKsAA.png?width=1600",
   },
   {
-    slug: "flatwork-podium",
+    slug: "large-commercial",
     number: "004",
-    title: "Structural Flatwork & Podium Slabs",
-    category: "Commercial",
+    title: "Large-Scale Commercial & Mixed-Use",
+    category: "Major developments",
     description:
-      "Post-tension and conventional slabs for podium decks, parking structures, and commercial flatwork. Ideal for mixed-use and multi-family projects.",
+      "Multi-story podium slabs, parking structures, and structural systems for large commercial and mixed-use developments. Typical projects $1M-$5M+ structural scope.",
     expertise:
-      "Coordination of embeds, MEP blocking, and inspection sequences to keep downstream trades on schedule.",
+      "Elite crews with experience coordinating complex forming, multiple pour sequences, shoring, and phased construction for major commercial projects.",
     image: "https://framerusercontent.com/images/alizrf3Wt4MdRldkrhcVS2X1KM.png?width=1600",
   },
   {
     slug: "preconstruction",
     number: "005",
-    title: "Preconstruction Scope & Bid Support",
-    category: "Planning",
+    title: "Preconstruction & Structural Coordination",
+    category: "Planning & budgeting",
     description:
-      "Early-stage structural concrete planning, budget estimates, and bid coordination to help you lock in realistic numbers before breaking ground.",
+      "Early-stage structural planning, scope refinement, and bid coordination for ultra-luxury and commercial projects. Lock in realistic budgets before breaking ground.",
     expertise:
-      "We help owners and GCs pressure-test plans, identify value engineering opportunities, and secure competitive bids from qualified crews.",
+      "We help owners, developers, and GCs pressure-test structural plans, identify value engineering opportunities, and secure competitive bids from elite crews.",
     image: "https://framerusercontent.com/images/ADTZ3vdyrEoaV3vHZUb6yuLtjkw.png?width=1600",
   },
 ];
@@ -143,30 +144,30 @@ const processSteps: ProcessStep[] = [
 
 const projects: Project[] = [
   {
-    id: "thousand-oaks-custom",
-    tag: "Custom Home",
-    title: "Thousand Oaks Custom Residence",
-    location: "Thousand Oaks, CA",
-    scope: "$180k custom home foundation and slab",
-    quote: "Matched with a crew specializing in high-end residential work. Foundation inspection passed on first review.",
+    id: "malibu-estate",
+    tag: "Ultra-Luxury",
+    title: "Malibu Hillside Estate",
+    location: "Malibu, CA",
+    scope: "$1.8M structural package: foundation, retaining, caissons",
+    quote: "Complex hillside site with challenging ocean-view grades. Elite crew coordinated structural engineering, geotechnical, and inspection sequencing flawlessly.",
     image: "https://framerusercontent.com/images/EKD4vt3mEzgUxiSxJs5zn6z0LA.png?width=2000",
   },
   {
-    id: "malibu-retaining",
-    tag: "Hillside",
-    title: "Malibu Hillside Retaining System",
-    location: "Malibu, CA",
-    scope: "$275k engineered retaining walls",
-    quote: "Complex hillside site with challenging access. Crew delivered on schedule despite terrain constraints.",
+    id: "thousand-oaks-commercial",
+    tag: "Commercial",
+    title: "Thousand Oaks Mixed-Use Development",
+    location: "Thousand Oaks, CA",
+    scope: "$2.4M podium slab and parking structure",
+    quote: "Multi-story post-tension podium over two-level parking. Crew delivered phased pours on schedule with zero downstream trade delays.",
     image: "https://framerusercontent.com/images/zXEQOh2Nj8nmcHurMBrAYR1Q.png?width=2000",
   },
   {
-    id: "westlake-adu",
-    tag: "ADU",
-    title: "Westlake Village ADU Foundation",
+    id: "westlake-luxury",
+    tag: "Custom Home",
+    title: "Westlake Village Custom Estate",
     location: "Westlake Village, CA",
-    scope: "$85k ADU foundation and utilities",
-    quote: "Tight lot with setback constraints. Foundation pour coordinated around existing home and landscaping.",
+    scope: "$950k foundation, slab, and architectural concrete",
+    quote: "Ultra-luxury custom home with exposed aggregate, architectural forming, and complex waterproofing. Foundation inspection passed first review.",
     image: "https://framerusercontent.com/images/TwVV0BAWwyCZawRnyx5SAG5pw.png?width=2000",
   },
 ];
@@ -196,23 +197,23 @@ const testimonials: Testimonial[] = [
 ];
 
 const whyOutlier = [
-  { label: "Focused only on structural concrete scopes" },
-  { label: "Local to Ventura County / Conejo / West Valley" },
-  { label: "Vetted, licensed, insured crews" },
+  { label: "Specialized in ultra-luxury & commercial structural concrete" },
+  { label: "$200k-$5M project range - high-complexity focus" },
+  { label: "Elite contractor network with proven track records" },
 ];
 
 const serviceHighlights = [
   {
-    title: "Custom home foundations",
-    description: "Complete foundation systems for luxury and custom residential projects across Ventura County.",
+    title: "Ultra-luxury structural packages",
+    description: "Complete foundation and structural systems for high-value custom homes and estates. Typical projects $500k-$3M.",
   },
   {
-    title: "Hillside retaining walls",
-    description: "Specialized crews for challenging terrain in Malibu, Topanga, and hillside communities.",
+    title: "Commercial concrete systems",
+    description: "Podium slabs, parking structures, and structural packages for commercial and mixed-use developments. $400k-$5M scope.",
   },
   {
-    title: "ADU & addition foundations",
-    description: "Foundation work for accessory dwelling units and major residential expansions.",
+    title: "Complex hillside solutions",
+    description: "Engineered retaining, caissons, and stabilization for challenging Malibu and Topanga sites. $300k-$2M typical.",
   },
 ];
 
@@ -260,7 +261,7 @@ const Index = () => {
         <div className="grain-surface absolute inset-0 rounded-none" />
       </div>
 
-      <SiteHeader />
+      <SharedHeader />
       
       <div className="relative">
         <HeroSection />
@@ -284,59 +285,6 @@ const Index = () => {
 
 export default Index;
 
-const SiteHeader = () => {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
-  return (
-    <header className="sticky top-0 z-50 border-b border-white/10 bg-[#0f0f0d]/98 backdrop-blur-md">
-      <div className="relative flex items-center justify-between px-4 py-6 text-sm font-medium uppercase tracking-[0.3em] text-white/70 sm:px-6 lg:px-8">
-        {/* Mobile Menu Button */}
-        <button 
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="flex items-center gap-4 text-white/80 lg:hidden"
-          aria-label="Toggle menu"
-        >
-          <Menu className="size-7" />
-        </button>
-        
-        {/* Desktop Navigation */}
-        <nav className="hidden lg:flex items-center gap-6 text-xs">
-          <Link to="/" className="text-white/80 transition hover:text-white">Home</Link>
-          <Link to="/how-it-works" className="text-white/80 transition hover:text-white">How it works</Link>
-          <Link to="/service-areas" className="text-white/80 transition hover:text-white">Service areas</Link>
-          <Link to="/about" className="text-white/80 transition hover:text-white">About</Link>
-        </nav>
-        
-        <Link to="/" className="absolute left-1/2 -translate-x-1/2 text-base font-semibold text-white/95">OUTLIER STRUCTURES</Link>
-        
-        <div className="flex items-center gap-6">
-          <a href={`mailto:${CONTACT_EMAIL}`} className="hidden sm:block text-white/80 transition hover:text-white" aria-label="Email us">
-            <Mail className="size-7" />
-          </a>
-          <Link 
-            to="/bid"
-            className="rounded-lg bg-gradient-to-r from-[hsl(22_96%_60%)] to-[hsl(32_95%_72%)] px-5 py-3 sm:px-7 sm:py-3.5 text-xs sm:text-sm font-bold uppercase tracking-[0.35em] text-[hsl(23_30%_12%)] shadow-[0_12px_32px_hsl(22_96%_40%_/_0.35)] transition hover:scale-[1.02]"
-          >
-            Get Bid
-          </Link>
-        </div>
-      </div>
-      
-      {/* Mobile Menu */}
-      {mobileMenuOpen && (
-        <div className="lg:hidden border-t border-white/10 bg-[#0f0f0d] px-4 py-4">
-          <nav className="flex flex-col gap-4 text-sm">
-            <Link to="/" className="text-white/80 transition hover:text-white" onClick={() => setMobileMenuOpen(false)}>Home</Link>
-            <Link to="/how-it-works" className="text-white/80 transition hover:text-white" onClick={() => setMobileMenuOpen(false)}>How it works</Link>
-            <Link to="/service-areas" className="text-white/80 transition hover:text-white" onClick={() => setMobileMenuOpen(false)}>Service areas</Link>
-            <Link to="/about" className="text-white/80 transition hover:text-white" onClick={() => setMobileMenuOpen(false)}>About</Link>
-          </nav>
-        </div>
-      )}
-    </header>
-  );
-};
-
 const HeroSection = () => (
   <section className="relative w-full overflow-hidden bg-black">
     <img src={heroImage} alt="Hero" className="absolute inset-0 h-full w-full object-cover" loading="lazy" />
@@ -344,18 +292,18 @@ const HeroSection = () => (
     <div className="relative z-10 flex min-h-[600px] flex-col justify-center gap-12 px-6 py-20 sm:min-h-[700px] sm:px-12 lg:min-h-[750px] lg:px-16">
       {/* Hero Content */}
       <div className="text-center text-white">
-        <p className="text-[0.65rem] uppercase tracking-[0.9em] text-white/50">Structural concrete, handled</p>
+        <p className="text-[0.65rem] uppercase tracking-[0.9em] text-white/50">Ultra-luxury structural concrete</p>
         <div className="mt-6 space-y-3">
           <h1 className="text-5xl font-normal uppercase leading-[1.1] sm:text-6xl lg:text-7xl">
-            VETTED STRUCTURAL CONCRETE
+            ELITE STRUCTURAL CONCRETE
           </h1>
           <div className="flex flex-col items-center justify-center gap-3 text-5xl font-normal uppercase leading-[1.1] sm:flex-row sm:gap-4 sm:text-6xl lg:text-7xl">
-            <span className="hero-highlight-box">CREWS</span>
-            <span>FOR VENTURA COUNTY</span>
+            <span className="hero-highlight-box">FOR</span>
+            <span>ULTRA-LUXURY & COMMERCIAL</span>
           </div>
         </div>
         <p className="mx-auto mt-8 max-w-2xl text-base leading-relaxed text-white/80 sm:text-lg">
-          Outlier Structures connects general contractors, developers, and serious homeowners with qualified structural concrete crews across Ventura County, Conejo Valley, West San Fernando Valley, and Malibu.
+          Outlier Structures connects ultra-luxury custom home projects and commercial developments with elite structural concrete contractors. Specializing in high-complexity $200k-$5M structural packages across Ventura County, Conejo Valley, West San Fernando Valley, Malibu, and Topanga.
         </p>
         <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
           <Link
@@ -459,19 +407,19 @@ const ExperienceSection = () => (
       <div className="grid gap-14 lg:grid-cols-[1.1fr,0.9fr]">
         <div>
           <SectionHeading
-            eyebrow="Focused expertise"
-            title={["Structural concrete", { highlight: "matching" }, "for serious projects" ]}
-            description="Outlier Structures connects your project with vetted structural concrete contractors in Ventura County, Conejo Valley, West San Fernando Valley, and Malibu."
+            eyebrow="Elite network"
+            title={["Ultra-luxury", { highlight: "structural" }, "concrete specialists" ]}
+            description="Outlier Structures connects ultra-luxury custom home projects and major commercial developments with elite structural concrete contractors across Ventura County, Conejo Valley, West San Fernando Valley, Malibu, and Topanga."
             tone="dark"
           />
           <p className="mt-10 text-lg leading-relaxed text-black/70">
-            We match general contractors, developers, and homeowners with licensed, insured structural concrete crews who specialize in custom homes, ADUs, retaining walls, and major foundations.
+            We match ultra-luxury custom home projects, major commercial developments, and high-complexity hillside sites with elite structural concrete contractors specializing in $200k-$5M structural packages.
           </p>
           <div className="mt-12 grid gap-6 sm:grid-cols-2">
             <div className="rounded-[32px] bg-black p-8 text-white">
               <p className="text-5xl font-semibold"><CountUp value="50+" /></p>
-              <p className="mt-2 text-base uppercase tracking-[0.35em] text-white/70">Vetted contractors</p>
-              <p className="mt-4 text-base leading-relaxed text-white/70">Licensed, insured structural concrete crews across our service area.</p>
+              <p className="mt-2 text-base uppercase tracking-[0.35em] text-white/70">Elite contractors</p>
+              <p className="mt-4 text-base leading-relaxed text-white/70">Elite structural concrete specialists for ultra-luxury and commercial projects.</p>
             </div>
             <div className="grid gap-6">
               <img src="https://framerusercontent.com/images/gQJjSNrLhYTUTDGcnrI63gYNc.png?width=1600" alt="Structure detail" className="grain-surface h-40 w-full rounded-[28px] object-cover" />
@@ -481,7 +429,7 @@ const ExperienceSection = () => (
         </div>
         <div className="flex flex-col justify-between gap-10 rounded-[40px] border border-black/5 bg-white/70 p-8">
           <p className="text-lg leading-relaxed text-black/70">
-            Outlier Structures offers more than lead generation—we're a neutral matchmaking layer connecting your project with the right structural concrete crews for your scope and budget.
+            Outlier Structures offers more than lead generation—we're a neutral matchmaking layer connecting ultra-luxury and commercial projects with elite structural concrete contractors capable of delivering $200k-$5M structural packages.
           </p>
           <div className="grid gap-6 sm:grid-cols-2">
             {statHighlights.map((stat) => (
@@ -575,21 +523,61 @@ const ServicesSection = ({ activeService, currentService, onChange }: ServicesSe
   </section>
 );
 
-const ProcessSection = () => (
-  <section className="space-y-12">
-    <SectionHeading
-      eyebrow="Process"
-      title={["Turning ideas into", { highlight: "build" }, "success"]}
-      description="A visible, documented process from intake through turnover. No guesswork, no vibe-coded chaos."
-      align="center"
-    />
-    <div className="space-y-10">
-      {processSteps.map((step) => (
-        <ArcSection key={step.number} step={step} />
-      ))}
-    </div>
-  </section>
-);
+const ProcessSection = () => {
+  const valueCards = [
+    {
+      title: "Ultra-luxury structural packages",
+      description: "Foundations and structural systems for high-value custom homes and estates.",
+      icon: Building2,
+    },
+    {
+      title: "Commercial & large commercial",
+      description: "Structural concrete packages for offices, retail, mixed-use, and institutional projects.",
+      icon: TrendingUp,
+    },
+    {
+      title: "Hillside & complex sites",
+      description: "Retaining walls, caissons, grade beams, and challenging terrain solutions.",
+      icon: MapPin,
+    },
+    {
+      title: "Curated contractor network",
+      description: "Elite structural crews with proven track records on high-complexity projects.",
+      icon: Users,
+    },
+  ];
+
+  return (
+    <section className="space-y-12">
+      <SectionHeading
+        eyebrow="Specialization"
+        title={["Turning vision into", { highlight: "build" }, "success"]}
+        description="Elite structural concrete solutions for ultra-luxury and commercial projects from $200k to $5M."
+        align="center"
+      />
+      <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+        {valueCards.map((card, index) => (
+          <div
+            key={card.title}
+            className="flex flex-col items-center text-center"
+          >
+            <div className="flex h-48 w-48 items-center justify-center rounded-full border-4 border-white/10 bg-gradient-to-br from-[#141414] to-[#050505] p-8 transition-all hover:border-primary hover:scale-105">
+              <div className="flex flex-col items-center gap-4">
+                <card.icon className="size-12 text-[hsl(var(--primary))]" />
+                <p className="text-sm font-semibold leading-tight text-white">
+                  {card.title}
+                </p>
+              </div>
+            </div>
+            <p className="mt-6 max-w-xs text-sm leading-relaxed text-white/70">
+              {card.description}
+            </p>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+};
 
 type FeaturedProjectsProps = {
   currentProject: Project;
@@ -703,8 +691,8 @@ const WhyOutlierSection = () => (
     <div className="space-y-6">
       <SectionHeading
         eyebrow="Why us"
-        title={["Why contractors and owners", { highlight: "work" }, "with Outlier Structures"]}
-        description="We're not a random lead generation service. We're a focused, neutral matchmaking layer for structural concrete projects."
+        title={["Why ultra-luxury and commercial", { highlight: "projects" }, "choose Outlier Structures"]}
+        description="We're not a random lead generation service. We're an elite matchmaking layer for high-complexity $200k-$5M structural concrete projects."
       />
       <div className="flex flex-wrap gap-3">
         <PrimaryCTA label="Get a bid" href="/bid" />
