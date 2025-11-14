@@ -336,7 +336,7 @@ const HeroSection = () => (
           </a>
           <a
             href={CONTACT_LINK}
-            className="inline-flex items-center gap-2 rounded-full border border-white/40 px-8 py-3.5 text-sm font-semibold uppercase tracking-[0.2em] text-white/90 transition hover:border-white hover:bg-white/10"
+            className="inline-flex items-center gap-2 rounded-full border border-white/40 px-8 py-3.5 text-sm font-semibold uppercase tracking-[0.2em] text-white/90 transition hover:border-primary hover:bg-white/10"
           >
             Get a structural bid <ArrowUpRight className="size-4" />
           </a>
@@ -491,7 +491,7 @@ const ServicesSection = ({ activeService, currentService, onChange }: ServicesSe
           title={["Smart solutions for every", { highlight: "project" }]}
           description="Pick your structural challenge. We line up the crews, sequencing, and inspection-ready documents to execute it."
         />
-        <a href={CONTACT_LINK} className="inline-flex items-center gap-2 text-base font-bold text-white transition hover:text-[hsl(var(--primary))]">
+        <a href={CONTACT_LINK} className="inline-flex items-center gap-2 text-base font-bold text-white transition hover:text-primary">
           Request a structural bid <ArrowUpRight className="size-5" />
         </a>
         <div className="divide-y divide-white/10 rounded-[36px] border border-white/10">
@@ -499,8 +499,13 @@ const ServicesSection = ({ activeService, currentService, onChange }: ServicesSe
             <button
               key={service.slug}
               onClick={() => onChange(service.slug)}
+              style={{
+                borderLeftWidth: '4px',
+                borderLeftStyle: 'solid',
+                borderLeftColor: activeService === service.slug ? '#f97316' : 'transparent'
+              }}
               className={cn(
-                "flex w-full items-center justify-between gap-6 px-6 py-5 text-left transition",
+                "flex w-full items-center justify-between gap-6 px-6 py-5 text-left transition-all hover:!border-l-[#f97316]",
                 activeService === service.slug ? "bg-white/5" : "hover:bg-white/5",
               )}
             >
@@ -508,7 +513,7 @@ const ServicesSection = ({ activeService, currentService, onChange }: ServicesSe
                 <p className="text-xs uppercase tracking-[0.6em] text-white/40">{service.number}</p>
                 <p className="mt-1 text-xl font-semibold text-white">{service.title}</p>
               </div>
-              <Plus className={cn("size-5", activeService === service.slug ? "text-white" : "text-white/40")} />
+              <Plus className={cn("size-5", activeService === service.slug ? "text-[#f97316]" : "text-white/40")} />
             </button>
           ))}
         </div>
@@ -530,7 +535,7 @@ const ServicesSection = ({ activeService, currentService, onChange }: ServicesSe
           </a>
           <a 
             href={CONTACT_LINK}
-            className="inline-flex items-center gap-2 rounded-lg border border-white/40 px-7 py-4 text-base font-semibold uppercase tracking-[0.25em] text-white/90 transition hover:border-white hover:bg-white/10"
+            className="inline-flex items-center gap-2 rounded-lg border border-white/40 px-7 py-4 text-base font-semibold uppercase tracking-[0.25em] text-white/90 transition hover:border-primary hover:bg-white/10"
           >
             Download scope <ArrowUpRight className="size-5" />
           </a>
@@ -647,10 +652,10 @@ const TeamSection = () => (
     />
     <div className="mt-10 grid gap-6 sm:grid-cols-2">
       {team.map((member) => (
-        <div key={member.name} className="rounded-[28px] border border-white/10 bg-[#050505]/80 p-6">
+        <div key={member.name} className="rounded-[28px] border border-white/10 bg-[#050505]/80 p-6 transition hover:border-primary">
           <p className="text-xs uppercase tracking-[0.6em] text-white/40">{member.role}</p>
           <p className="text-2xl font-semibold text-white">{member.name}</p>
-          <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-white/70 transition hover:text-white">
+          <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-white/70 transition hover:text-primary">
             LinkedIn <ArrowUpRight className="size-4" />
           </a>
         </div>
@@ -663,7 +668,7 @@ const AwardsSection = () => (
   <section className="grid gap-10 rounded-[48px] border border-white/10 bg-[#111111]/80 p-6 sm:p-10 lg:grid-cols-[0.8fr,1.2fr]">
     <div className="space-y-4">
       {awards.map((award) => (
-        <div key={award.title} className="rounded-[24px] border border-white/10 bg-black/30 p-5">
+        <div key={award.title} className="rounded-[24px] border border-white/10 bg-black/30 p-5 transition hover:border-primary">
           <p className="text-xs uppercase tracking-[0.6em] text-white/40">{award.year}</p>
           <p className="text-lg font-semibold text-white">{award.title}</p>
         </div>
@@ -689,13 +694,13 @@ const NewsSection = () => (
     <div className="paper-surface rounded-[40px] p-6 sm:p-10">
       <div className="flex flex-wrap items-center justify-between gap-6">
         <SectionHeading eyebrow="Insights" title={["Latest news and creative", { highlight: "inspiration" }]} tone="dark" />
-        <a href="#services" className="inline-flex items-center gap-2 text-sm font-semibold text-black/70 transition hover:text-black">
+        <a href="#services" className="inline-flex items-center gap-2 text-sm font-semibold text-black/70 transition hover:text-primary">
           View services <ArrowUpRight className="size-4" />
         </a>
       </div>
       <div className="mt-8 grid gap-6 lg:grid-cols-3">
         {news.map((article) => (
-          <article key={article.title} className="rounded-[28px] border border-black/10 bg-white/80">
+          <article key={article.title} className="cursor-pointer rounded-[28px] border border-black/10 bg-white/80 transition hover:border-primary">
             <img src={article.image} alt={article.title} className="h-48 w-full rounded-[28px] object-cover" loading="lazy" />
             <div className="space-y-3 p-6 text-black">
               <div className="text-xs uppercase tracking-[0.5em] text-black/60">
@@ -718,10 +723,10 @@ const FooterSection = () => (
         <h3 className="mt-2 text-3xl font-semibold">Contact us</h3>
       </div>
       <div className="flex items-center justify-end gap-3">
-        <a href={CONTACT_LINK} className="inline-flex items-center gap-2 rounded-full border border-black/10 px-5 py-3 text-sm font-semibold">
+        <a href={CONTACT_LINK} className="inline-flex items-center gap-2 rounded-full border border-black/10 px-5 py-3 text-sm font-semibold transition hover:border-primary">
           Contact us <ArrowUpRight className="size-4" />
         </a>
-        <a href="#projects" className="inline-flex items-center gap-2 rounded-full bg-black px-5 py-3 text-sm font-semibold text-white">
+        <a href="#projects" className="inline-flex items-center gap-2 rounded-full bg-black px-5 py-3 text-sm font-semibold text-white transition hover:scale-[1.02]">
           All projects <ArrowUpRight className="size-4" />
         </a>
       </div>
@@ -741,7 +746,7 @@ const FooterSection = () => (
         <div>
           {footerLinks.socials.map((social) => (
             <p key={social.label}>
-              <a href={social.href} target="_blank" rel="noreferrer" className="transition hover:text-white">
+              <a href={social.href} target="_blank" rel="noreferrer" className="transition hover:text-primary">
                 {social.label}
               </a>
             </p>
@@ -803,7 +808,7 @@ const PrimaryCTA = ({ label, dark = false, href = CONTACT_LINK }: { label: strin
 const SecondaryCTA = ({ label, href = CONTACT_LINK }: { label: string; href?: string }) => (
   <a
     href={href}
-    className="inline-flex items-center gap-2 rounded-full border border-white/40 px-5 py-3 text-sm font-semibold text-white/80 transition hover:border-white hover:text-white"
+    className="inline-flex items-center gap-2 rounded-full border border-white/40 px-5 py-3 text-sm font-semibold text-white/80 transition hover:border-primary hover:text-white"
   >
     {label}
     <ArrowUpRight className="size-4" />
@@ -813,7 +818,7 @@ const SecondaryCTA = ({ label, href = CONTACT_LINK }: { label: string; href?: st
 const NavButton = ({ direction, onClick }: { direction: "left" | "right"; onClick: () => void }) => (
   <button
     onClick={onClick}
-    className="flex size-11 items-center justify-center rounded-full border border-white/15 text-white/70 transition hover:border-white/50 hover:text-white"
+    className="flex size-11 items-center justify-center rounded-full border border-white/15 text-white/70 transition hover:border-primary hover:text-white"
     aria-label={direction === "left" ? "Previous" : "Next"}
   >
     {direction === "left" ? <ArrowLeft className="size-4" /> : <ArrowRight className="size-4" />}
