@@ -1,97 +1,99 @@
-import { useState } from "react";
-import { ChevronDown } from "lucide-react";
+import { motion } from "framer-motion";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 const faqs = [
   {
     question: "Do you self-perform the concrete work?",
-    answer: "No. Outlier Structures is a project matchmaking and lead generation company. We connect you with vetted structural concrete contractors who self-perform the work. We handle the initial qualification, coordination, and introduction.",
+    answer:
+      "No. Outlier Structures is a matchmaking platform that connects you with vetted structural concrete crews. We don't self-perform work, which means we stay focused on finding the right fit for your project without conflicts of interest.",
   },
   {
-    question: "What size projects are a fit?",
-    answer: "We focus on high-value structural concrete projects starting at approximately $50k and ranging into multi-million dollar packages. Our sweet spot includes podium decks, parking structures, seismic retrofits, and complex foundation work for commercial and mixed-use developments.",
+    question: "What project sizes are a good fit?",
+    answer:
+      "We focus on structural concrete packages typically ranging from $50k to multi-million dollar projects. This includes podium decks, parking structures, foundations, seismic retrofits, and other high-value structural work. We're not a fit for small residential patios or driveways.",
   },
   {
     question: "Do you work outside Ventura County?",
-    answer: "Yes. While Ventura County is our core market, our network extends across Southern California including Los Angeles, Orange County, and San Bernardino areas. We're actively expanding to other markets based on demand.",
+    answer:
+      "Yes. While Ventura County is our core market, our network extends throughout Southern California, including Los Angeles, Orange, and San Diego counties. Reach out with your location and we'll let you know if we can help.",
   },
   {
     question: "How do you choose which contractor receives my project?",
-    answer: "We match projects based on scope complexity, schedule requirements, contractor availability, and past performance on similar work. Our goal is to connect you with a crew whose strengths align with your specific project needs.",
+    answer:
+      "We match based on project type, size, location, timeline, and crew availability. We consider each contractor's past experience with similar work, current workload, safety record, and insurance coverage. You always have final say on who you work with.",
   },
   {
-    question: "How are fees and pricing structured?",
-    answer: "There is no cost to submit a project or receive an introduction. Contractors pay Outlier Structures a referral fee only when they successfully bid and win work. You receive direct, competitive pricing from the structural crew with no markup from us.",
+    question: "How are fees structured?",
+    answer:
+      "There's no cost to submit a project or receive a bid. Outlier Structures is compensated by contractors in our network when a successful match is made. This model keeps us focused on making good fits, not charging upfront fees.",
+  },
+  {
+    question: "What info should I have ready before requesting a bid?",
+    answer:
+      "Helpful to have: project location, approximate timeline, structural plans (if available), project type (podium, parking, foundation, etc.), and a rough budget range. That said, if you're early in planning, reach out anyway - we can help refine scope.",
   },
   {
     question: "How quickly will I hear back?",
-    answer: "Our average first response time is under 24 hours. For urgent projects, call us directly at (805) 555-0100 and we'll prioritize your review and contractor outreach immediately.",
-  },
-  {
-    question: "Can I request multiple bids?",
-    answer: "Absolutely. If you'd like competitive bids from multiple crews, let us know in your intake form or during the initial call. We can facilitate introductions to 2-3 qualified contractors depending on project scope and timing.",
+    answer:
+      "We respond to all project submissions within one business day. Complex projects may require a brief call to clarify scope before matching you with contractors. Most initial matches happen within 2-3 business days.",
   },
 ];
 
 export const FAQ = () => {
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
-
-  const toggleFAQ = (index: number) => {
-    setOpenIndex(openIndex === index ? null : index);
-  };
-
   return (
-    <section id="faq" className="py-16 sm:py-24 relative">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12 sm:mb-16">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
-            Frequently Asked Questions
+    <section id="faq" className="py-24 relative">
+      <div className="container mx-auto px-4">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-4xl font-bold mb-4">
+            Questions about how this works
           </h2>
-          <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto">
-            Everything you need to know about working with Outlier Structures
+          <p className="text-slate-400 text-lg max-w-2xl mx-auto">
+            Everything you need to know about Outlier Structures
           </p>
-        </div>
+        </motion.div>
 
-        <div className="max-w-3xl mx-auto space-y-4">
-          {faqs.map((faq, index) => (
-            <div
-              key={index}
-              className="glass-card rounded-xl overflow-hidden transition-all duration-300"
-            >
-              <button
-                onClick={() => toggleFAQ(index)}
-                className="w-full text-left p-6 flex justify-between items-center gap-4 hover:bg-secondary/50 transition-colors"
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="max-w-3xl mx-auto"
+        >
+          <Accordion type="single" collapsible className="space-y-4">
+            {faqs.map((faq, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: index * 0.05 }}
               >
-                <span className="font-semibold text-base sm:text-lg pr-4">
-                  {faq.question}
-                </span>
-                <ChevronDown
-                  className={`h-5 w-5 text-primary flex-shrink-0 transition-transform duration-300 ${
-                    openIndex === index ? "rotate-180" : ""
-                  }`}
-                />
-              </button>
-              <div
-                className={`overflow-hidden transition-all duration-300 ${
-                  openIndex === index ? "max-h-96" : "max-h-0"
-                }`}
-              >
-                <div className="px-6 pb-6 text-muted-foreground leading-relaxed border-t border-border pt-4">
-                  {faq.answer}
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        <div className="text-center mt-12">
-          <p className="text-muted-foreground mb-4">Still have questions?</p>
-          <a
-            href="#main-form"
-            className="text-primary hover:text-primary-glow font-semibold inline-flex items-center gap-2 transition-colors"
-          >
-            Contact us directly →
-          </a>
-        </div>
+                <AccordionItem
+                  value={`item-${index}`}
+                  className="glass-card border border-slate-700/50 rounded-xl px-6 hover:border-cyan-400/50 transition-colors"
+                >
+                  <AccordionTrigger className="text-left text-slate-50 hover:text-cyan-400 py-6 text-lg font-semibold">
+                    {faq.question}
+                  </AccordionTrigger>
+                  <AccordionContent className="text-slate-400 pb-6 leading-relaxed">
+                    {faq.answer}
+                  </AccordionContent>
+                </AccordionItem>
+              </motion.div>
+            ))}
+          </Accordion>
+        </motion.div>
       </div>
     </section>
   );

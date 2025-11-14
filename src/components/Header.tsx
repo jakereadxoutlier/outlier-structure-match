@@ -1,80 +1,101 @@
 import { useState, useEffect } from "react";
-import { Phone } from "lucide-react";
+import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import { Phone, Square } from "lucide-react";
 
 export const Header = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      setScrolled(window.scrollY > 50);
     };
-
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const scrollToForm = () => {
-    document.getElementById("main-form")?.scrollIntoView({ behavior: "smooth" });
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
   };
 
   return (
-    <header
+    <motion.header
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      transition={{ duration: 0.5 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? "glass-card border-b border-border shadow-lg"
+        scrolled
+          ? "bg-slate-950/80 backdrop-blur-lg border-b border-slate-800/50 shadow-lg"
           : "bg-transparent"
       }`}
     >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 sm:h-20">
-          <a
-            href="#"
-            onClick={(e) => {
-              e.preventDefault();
-              window.scrollTo({ top: 0, behavior: "smooth" });
-            }}
-            className="text-xl sm:text-2xl font-bold text-foreground hover:text-primary transition-colors"
-          >
-            Outlier Structures
-          </a>
+      <div className="container mx-auto px-4">
+        <div className="flex items-center justify-between h-20">
+          {/* Logo */}
+          <div className="flex items-center gap-3">
+            <Square className="w-6 h-6 text-cyan-400" strokeWidth={2.5} />
+            <span className="text-xl font-bold text-slate-50">
+              Outlier Structures
+            </span>
+          </div>
 
-          <nav className="hidden lg:flex items-center gap-8">
-            <a href="#services" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+          {/* Navigation */}
+          <nav className="hidden md:flex items-center gap-8">
+            <button
+              onClick={() => scrollToSection("services")}
+              className="text-sm text-slate-300 hover:text-cyan-400 transition-colors"
+            >
               Services
-            </a>
-            <a href="#how-it-works" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
-              How It Works
-            </a>
-            <a href="#projects" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+            </button>
+            <button
+              onClick={() => scrollToSection("how-it-works")}
+              className="text-sm text-slate-300 hover:text-cyan-400 transition-colors"
+            >
+              Process
+            </button>
+            <button
+              onClick={() => scrollToSection("projects")}
+              className="text-sm text-slate-300 hover:text-cyan-400 transition-colors"
+            >
               Projects
-            </a>
-            <a href="#why-outlier" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+            </button>
+            <button
+              onClick={() => scrollToSection("why-outlier")}
+              className="text-sm text-slate-300 hover:text-cyan-400 transition-colors"
+            >
               Why Outlier
-            </a>
-            <a href="#faq" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+            </button>
+            <button
+              onClick={() => scrollToSection("faq")}
+              className="text-sm text-slate-300 hover:text-cyan-400 transition-colors"
+            >
               FAQ
-            </a>
+            </button>
           </nav>
 
-          <div className="flex items-center gap-2 sm:gap-4">
+          {/* CTA Buttons */}
+          <div className="flex items-center gap-3">
             <Button
               variant="outline"
               size="sm"
-              className="hidden sm:flex items-center gap-2 border-primary/50 hover:border-primary hover:bg-primary/10"
+              className="hidden lg:flex items-center gap-2 border-slate-700 text-slate-300 hover:border-cyan-400 hover:text-cyan-400"
             >
-              <Phone className="h-4 w-4" />
-              <span className="hidden md:inline">(805) 555-0100</span>
+              <Phone className="w-4 h-4" />
+              <span>(805) 555-0100</span>
             </Button>
             <Button
-              onClick={scrollToForm}
-              className="bg-primary hover:bg-primary-glow text-primary-foreground font-semibold glow-primary transition-all text-sm sm:text-base px-3 sm:px-6"
+              onClick={() => scrollToSection("lead-form")}
+              size="sm"
+              className="bg-cyan-500 text-slate-950 hover:bg-cyan-400 font-semibold"
             >
-              Get a Bid
+              Get a structural bid
             </Button>
           </div>
         </div>
       </div>
-    </header>
+    </motion.header>
   );
 };

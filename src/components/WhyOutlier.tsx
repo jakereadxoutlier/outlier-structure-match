@@ -1,71 +1,134 @@
-import { Target, Shield, Calendar, MessageSquare } from "lucide-react";
+import { motion } from "framer-motion";
+import { Target, Shield, Clock, MessageSquare, Quote } from "lucide-react";
 
 const pillars = [
   {
     icon: Target,
-    title: "Structural-Only Focus",
-    description: "We don't spread thin across all trades. Our entire network is built around structural concrete expertise, from foundations to post-tension decks.",
+    title: "Structural-only focus",
+    description:
+      "We don't dilute expertise across flatwork or landscaping. Just serious structural concrete.",
   },
   {
     icon: Shield,
-    title: "Pre-Vetted Crews",
-    description: "Every contractor in our network is pre-qualified for licensing, insurance, and proven performance on complex projects. No random directory listings.",
+    title: "Vetted crews & safety-minded operations",
+    description:
+      "Every crew verified for insurance, safety record, and past project performance.",
   },
   {
-    icon: Calendar,
-    title: "Schedule & Inspection Driven",
-    description: "We match you with teams who understand critical path sequencing, inspection coordination, and the realities of phased construction timelines.",
+    icon: Clock,
+    title: "Schedule & inspection driven",
+    description:
+      "Crews who understand inspections, coordination, and the cost of delays.",
   },
   {
     icon: MessageSquare,
-    title: "Transparent, Direct Communication",
-    description: "No black-box bidding or endless layers. You communicate directly with the structural contractor after our initial match and introduction.",
+    title: "Transparent, direct communication",
+    description:
+      "No runarounds. Realistic timelines, clear pricing, and responsive project managers.",
+  },
+];
+
+const testimonials = [
+  {
+    quote:
+      "We've used Outlier Structures on three podium decks now. Every crew they've matched us with knows how to handle inspections and stay on schedule.",
+    author: "Mike Torrente",
+    role: "VP of Construction, Pacific Coast Builders",
+  },
+  {
+    quote:
+      "Finally, a way to get realistic structural bids without chasing down five contractors who ghost you or don't understand post-tension work.",
+    author: "Sarah Chen",
+    role: "Project Manager, Westside Development",
+  },
+  {
+    quote:
+      "The seismic retrofit crew Outlier connected us with was professional, coordinated, and finished ahead of schedule. Our tenants barely noticed the work.",
+    author: "David Ramirez",
+    role: "Asset Manager, Heritage Properties REIT",
   },
 ];
 
 export const WhyOutlier = () => {
   return (
-    <section id="why-outlier" className="py-16 sm:py-24 relative">
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-primary/5 to-background pointer-events-none" />
-      
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
-        <div className="text-center mb-12 sm:mb-16">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
-            Why Choose Outlier Structures
+    <section id="why-outlier" className="py-24 relative">
+      <div className="container mx-auto px-4">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-4xl font-bold mb-4">
+            Why Outlier Structures instead of just calling another contractor
           </h2>
-          <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto">
-            A modern approach to structural concrete project matching
+          <p className="text-slate-400 text-lg max-w-3xl mx-auto">
+            We're not a general directory. We match you with structural concrete
+            crews who can actually handle your project.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-6 sm:gap-8 max-w-5xl mx-auto">
-          {pillars.map((pillar) => {
-            const Icon = pillar.icon;
-            return (
-              <div
-                key={pillar.title}
-                className="glass-card p-6 sm:p-8 rounded-xl hover:shadow-2xl hover:glow-primary transition-all duration-300 group"
-              >
-                <div className="bg-primary/10 w-14 h-14 rounded-xl flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
-                  <Icon className="h-7 w-7 text-primary" />
+        {/* Pillars */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
+          {pillars.map((pillar, index) => (
+            <motion.div
+              key={pillar.title}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              className="glass-card rounded-xl p-6 border border-slate-700/50"
+            >
+              <div className="mb-4">
+                <div className="w-12 h-12 rounded-lg bg-cyan-500/10 flex items-center justify-center">
+                  <pillar.icon className="w-6 h-6 text-cyan-400" />
                 </div>
-                <h3 className="text-xl sm:text-2xl font-bold mb-3">{pillar.title}</h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  {pillar.description}
-                </p>
               </div>
-            );
-          })}
+              <h3 className="text-lg font-bold mb-2 text-slate-50">
+                {pillar.title}
+              </h3>
+              <p className="text-slate-400 text-sm leading-relaxed">
+                {pillar.description}
+              </p>
+            </motion.div>
+          ))}
         </div>
 
-        <div className="text-center mt-12">
-          <a
-            href="#main-form"
-            className="text-primary hover:text-primary-glow font-semibold inline-flex items-center gap-2 transition-colors text-lg"
-          >
-            Get started with Outlier Structures →
-          </a>
-        </div>
+        {/* Testimonials */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="max-w-6xl mx-auto"
+        >
+          <div className="grid md:grid-cols-3 gap-8">
+            {testimonials.map((testimonial, index) => (
+              <motion.div
+                key={testimonial.author}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                className="glass-card rounded-xl p-6 border border-slate-700/50"
+              >
+                <Quote className="w-8 h-8 text-cyan-400/30 mb-4" />
+                <p className="text-slate-300 text-sm leading-relaxed mb-6 italic">
+                  "{testimonial.quote}"
+                </p>
+                <div className="border-t border-slate-700/50 pt-4">
+                  <p className="font-semibold text-slate-50">
+                    {testimonial.author}
+                  </p>
+                  <p className="text-xs text-slate-400 mt-1">
+                    {testimonial.role}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
       </div>
     </section>
   );

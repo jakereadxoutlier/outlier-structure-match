@@ -1,77 +1,91 @@
-import { FileText, Users, CheckCircle } from "lucide-react";
+import { motion } from "framer-motion";
+import { ClipboardList, Users2, CheckCircle2 } from "lucide-react";
 
 const steps = [
   {
-    number: 1,
-    icon: FileText,
+    number: "01",
+    icon: ClipboardList,
     title: "Tell us about your structural package",
-    description: "Complete our intake form or schedule a quick call. Share plans, scope, timeline, and budget parameters.",
+    description:
+      "Quick intake form or 15-minute call. Share your plans, timeline, and budget range. No long discovery meetings.",
   },
   {
-    number: 2,
-    icon: Users,
+    number: "02",
+    icon: Users2,
     title: "We match you with vetted structural crews",
-    description: "We review your project requirements and connect you with pre-qualified contractors who fit your schedule and scope.",
+    description:
+      "We review scope, plans, and timing. Match you with crews who have done similar work and can meet your schedule.",
   },
   {
-    number: 3,
-    icon: CheckCircle,
+    number: "03",
+    icon: CheckCircle2,
     title: "You get a fast, clear bid and schedule",
-    description: "The contractor reaches out directly with competitive pricing, sequencing plan, and transparent timelines.",
+    description:
+      "Contractor connects directly with you. Realistic pricing, clear timeline, and straightforward communication.",
   },
 ];
 
 export const HowItWorks = () => {
   return (
-    <section id="how-it-works" className="py-16 sm:py-24 relative">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12 sm:mb-16">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
-            How Outlier Structures Works on Your Project
+    <section id="how-it-works" className="py-24 relative">
+      <div className="container mx-auto px-4">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-4xl font-bold mb-4">
+            How Outlier Structures works on your project
           </h2>
-          <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto">
-            A streamlined process to connect you with the right structural concrete partner
+          <p className="text-slate-400 text-lg max-w-2xl mx-auto">
+            Simple process, serious results
           </p>
-        </div>
+        </motion.div>
 
-        <div className="relative max-w-5xl mx-auto">
-          {/* Progress line - desktop only */}
-          <div className="hidden lg:block absolute top-20 left-0 right-0 h-1 bg-gradient-to-r from-primary/30 via-primary to-primary/30" />
+        <div className="max-w-5xl mx-auto">
+          <div className="grid md:grid-cols-3 gap-8 relative">
+            {/* Connection Line */}
+            <div className="hidden md:block absolute top-16 left-0 right-0 h-0.5 bg-gradient-to-r from-cyan-500/50 via-cyan-500 to-cyan-500/50" 
+              style={{ width: 'calc(100% - 8rem)', left: '4rem' }} 
+            />
 
-          <div className="grid lg:grid-cols-3 gap-8 lg:gap-12">
-            {steps.map((step) => {
-              const Icon = step.icon;
-              return (
-                <div key={step.number} className="relative">
-                  {/* Step number badge */}
-                  <div className="flex flex-col items-center lg:items-start mb-6">
-                    <div className="glass-card w-16 h-16 rounded-full flex items-center justify-center mb-4 border-2 border-primary glow-primary relative z-10">
-                      <span className="text-2xl font-bold text-primary">{step.number}</span>
-                    </div>
-                    <div className="bg-secondary/50 w-14 h-14 rounded-xl flex items-center justify-center">
-                      <Icon className="h-7 w-7 text-primary" />
+            {steps.map((step, index) => (
+              <motion.div
+                key={step.number}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.2 }}
+                className="relative"
+              >
+                {/* Number Circle */}
+                <div className="flex justify-center mb-6">
+                  <div className="w-16 h-16 rounded-full bg-cyan-500/10 border-2 border-cyan-400 flex items-center justify-center relative z-10">
+                    <span className="text-2xl font-bold text-cyan-400">
+                      {step.number}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Card */}
+                <div className="glass-card rounded-xl p-6 border border-slate-700/50 text-center">
+                  <div className="flex justify-center mb-4">
+                    <div className="w-12 h-12 rounded-lg bg-cyan-500/10 flex items-center justify-center">
+                      <step.icon className="w-6 h-6 text-cyan-400" />
                     </div>
                   </div>
-
-                  <h3 className="text-xl sm:text-2xl font-bold mb-3 text-center lg:text-left">
+                  <h3 className="text-lg font-bold mb-3 text-slate-50">
                     {step.title}
                   </h3>
-                  <p className="text-muted-foreground leading-relaxed text-center lg:text-left">
+                  <p className="text-slate-400 text-sm leading-relaxed">
                     {step.description}
                   </p>
                 </div>
-              );
-            })}
+              </motion.div>
+            ))}
           </div>
-        </div>
-
-        <div className="text-center mt-12">
-          <a
-            href="#main-form"
-            className="text-primary hover:text-primary-glow font-semibold inline-flex items-center gap-2 transition-colors"
-          >
-            Start your project →
-          </a>
         </div>
       </div>
     </section>
