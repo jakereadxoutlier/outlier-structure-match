@@ -1,6 +1,7 @@
 import { useMemo, useState, useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 import type { LucideIcon } from "lucide-react";
-import { ArrowLeft, ArrowRight, ArrowUpRight, Calendar, Clock, Globe, Mail, Menu, Plus, ThumbsUp } from "lucide-react";
+import { ArrowLeft, ArrowRight, ArrowUpRight, Calendar, Clock, Globe, Mail, MapPin, Menu, Plus, ThumbsUp, Users } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 
@@ -40,7 +41,7 @@ type Testimonial = {
 };
 
 const CONTACT_EMAIL = "hello@outlierstructures.com";
-const CONTACT_LINK = `mailto:${CONTACT_EMAIL}?subject=Structural%20Bid%20Request`;
+const CONTACT_PHONE = "(805) 555-0100";
 const heroImage = "https://framerusercontent.com/images/FVyQv90OMyWJQAyRfCesHadT8Q.png?width=2400";
 
 const logoPlaceholders = [
@@ -53,66 +54,66 @@ const logoPlaceholders = [
 ];
 
 const statHighlights: { icon: LucideIcon; value: string; label: string }[] = [
-  { icon: Globe, value: "150M+", label: "Projects nationwide" },
-  { icon: Clock, value: "98%", label: "On-time delivery" },
-  { icon: Calendar, value: "12+", label: "Years experience" },
-  { icon: ThumbsUp, value: "100%", label: "Client satisfaction" },
+  { icon: Users, value: "50+", label: "Vetted contractors" },
+  { icon: Clock, value: "24-48h", label: "Initial response" },
+  { icon: MapPin, value: "10+", label: "Cities served" },
+  { icon: ThumbsUp, value: "$50k-500k", label: "Project range" },
 ];
 
 const services: Service[] = [
   {
-    slug: "podium",
+    slug: "custom-homes",
     number: "001",
-    title: "Podium & Structural Slabs",
-    category: "Urban mixed-use",
+    title: "Custom Home Foundations & Slabs",
+    category: "Residential",
     description:
-      "Post-tension and conventional slabs for podium decks, vehicle ramps, and transfer levels built for tight downtown envelopes.",
+      "Complete foundation systems for custom homes and luxury residences. From site prep through final slab placement, matched with crews who specialize in high-end residential work.",
     expertise:
-      "We choreograph embeds, MEP blocking, and inspection hold points so steel and framing trades keep moving without costly resets.",
+      "Our contractors understand architectural detailing, waterproofing, and finish-grade coordination for homes where quality and precision matter.",
     image: "https://framerusercontent.com/images/dImXQCCyieTCNnOOGH9tSqckO0.png?width=1600",
   },
   {
-    slug: "foundations",
+    slug: "retaining",
     number: "002",
-    title: "Foundations & Retaining Systems",
-    category: "Structural core",
+    title: "Retaining Walls & Hillside Stabilization",
+    category: "Site work",
     description:
-      "Mat slabs, drilled piers, retaining walls, and grade beams executed with seismic resilience and waterproofing coordination.",
+      "Engineered retaining walls, hillside stabilization, and slope protection for challenging terrain across Ventura County and Malibu hillsides.",
     expertise:
-      "Pour breaks, engineered shoring, and QA/QC logs are prepared in advance so owners never worry about hidden issues later.",
+      "Specialized crews experienced with hillside access, drainage integration, and seismic reinforcement for high-value coastal and canyon properties.",
     image: "https://framerusercontent.com/images/5f8pIe6jceTfDhrYmTvIbWcU6Q.png?width=1600",
   },
   {
-    slug: "parking",
+    slug: "adu-additions",
     number: "003",
-    title: "Parking Structures & Ramps",
-    category: "Mobility",
+    title: "ADU & Addition Foundations",
+    category: "Residential expansion",
     description:
-      "Multi-level parking decks and precast integrations designed for heavy load transfers and phased civic interfaces.",
+      "Foundation and structural concrete work for accessory dwelling units, major additions, and residential expansions. Coordinated with existing structures and utilities.",
     expertise:
-      "We coordinate crane picks, shoring, and phased deliveries so retail or public frontage stays operational throughout.",
+      "Crews who understand tight urban lots, setback constraints, and phased construction so existing homes stay livable during the build.",
     image: "https://framerusercontent.com/images/9jSgyFhNM7HwVGIR8VBmInmKsAA.png?width=1600",
   },
   {
-    slug: "retrofit",
+    slug: "flatwork-podium",
     number: "004",
-    title: "Seismic Retrofit & Repair",
-    category: "Existing assets",
+    title: "Structural Flatwork & Podium Slabs",
+    category: "Commercial",
     description:
-      "Shear walls, FRP wraps, underpinning, and structural repairs delivered while buildings remain partially occupied.",
+      "Post-tension and conventional slabs for podium decks, parking structures, and commercial flatwork. Ideal for mixed-use and multi-family projects.",
     expertise:
-      "Night pours, vibration monitoring, and tenant communication plans keep operations safe and predictable.",
+      "Coordination of embeds, MEP blocking, and inspection sequences to keep downstream trades on schedule.",
     image: "https://framerusercontent.com/images/alizrf3Wt4MdRldkrhcVS2X1KM.png?width=1600",
   },
   {
-    slug: "immersive",
+    slug: "preconstruction",
     number: "005",
-    title: "Immersive 3D & VR Planning",
-    category: "Preconstruction",
+    title: "Preconstruction Scope & Bid Support",
+    category: "Planning",
     description:
-      "High-fidelity 3D previsualization, logistics planning, and schedule modeling that compresses decision timelines.",
+      "Early-stage structural concrete planning, budget estimates, and bid coordination to help you lock in realistic numbers before breaking ground.",
     expertise:
-      "Stakeholders walk pours virtually, review crane swing paths, and sign off on every embed before crews mobilize.",
+      "We help owners and GCs pressure-test plans, identify value engineering opportunities, and secure competitive bids from qualified crews.",
     image: "https://framerusercontent.com/images/ADTZ3vdyrEoaV3vHZUb6yuLtjkw.png?width=1600",
   },
 ];
@@ -120,119 +121,118 @@ const services: Service[] = [
 const processSteps: ProcessStep[] = [
   {
     number: "001",
-    title: "Survey",
-    copy: "We pressure-test your plans, quantify risk, and scope the exact structural crew configuration you actually need.",
+    title: "Submit",
+    copy: "You share your project details through our structured intake form. Location, scope, budget range, timeline, and any plans you have ready.",
   },
   {
     number: "002",
-    title: "Design",
-    copy: "Architects, engineers, and detailers convert vision into build-ready models, logistics plans, and inspection workflows.",
+    title: "Match",
+    copy: "Outlier Structures reviews your project and routes it to qualified structural concrete contractors in our network. All crews are licensed, insured, and have proven track records.",
   },
   {
     number: "003",
-    title: "Build",
-    copy: "Dedicated crews arrive with premium materials, refined sequencing, and inspection-ready documentation for every pour.",
+    title: "Choose",
+    copy: "You receive detailed bids, interview contractors, and make your own hiring decision. We facilitate introductions but you maintain full control.",
   },
   {
     number: "004",
-    title: "Deliver",
-    copy: "Every embed is verified, QA/QC logs are complete, and owners receive a fully documented structural handoff.",
+    title: "Build",
+    copy: "We stay in touch at a high level throughout your project to ensure things progress smoothly and facilitate problem-solving if needed.",
   },
 ];
 
 const projects: Project[] = [
   {
-    id: "ecohaus",
-    tag: "Residential",
-    title: "Ecohaus Residence",
-    location: "Ventura, California",
-    scope: "$1.2M structural podium deck over parking",
-    quote: "Delivered on schedule while orchestrating eleven inspection hold points and back-to-back pours.",
+    id: "thousand-oaks-custom",
+    tag: "Custom Home",
+    title: "Thousand Oaks Custom Residence",
+    location: "Thousand Oaks, CA",
+    scope: "$180k custom home foundation and slab",
+    quote: "Matched with a crew specializing in high-end residential work. Foundation inspection passed on first review.",
     image: "https://framerusercontent.com/images/EKD4vt3mEzgUxiSxJs5zn6z0LA.png?width=2000",
   },
   {
-    id: "westside",
-    tag: "Renovation",
-    title: "Westside Parking Hub",
-    location: "Oxnard, California",
-    scope: "$2.8M precast + cast-in-place hybrid parking structure",
-    quote: "Phased construction allowed ground-floor retail to stay open the entire build.",
+    id: "malibu-retaining",
+    tag: "Hillside",
+    title: "Malibu Hillside Retaining System",
+    location: "Malibu, CA",
+    scope: "$275k engineered retaining walls",
+    quote: "Complex hillside site with challenging access. Crew delivered on schedule despite terrain constraints.",
     image: "https://framerusercontent.com/images/zXEQOh2Nj8nmcHurMBrAYR1Q.png?width=2000",
   },
   {
-    id: "heritage",
-    tag: "Commercial",
-    title: "Heritage Retrofit",
-    location: "Santa Barbara, California",
-    scope: "$900K seismic retrofit & structural repair",
-    quote: "Zero tenant disruption incidents even while underpinning occupied wings and transferring load paths.",
+    id: "westlake-adu",
+    tag: "ADU",
+    title: "Westlake Village ADU Foundation",
+    location: "Westlake Village, CA",
+    scope: "$85k ADU foundation and utilities",
+    quote: "Tight lot with setback constraints. Foundation pour coordinated around existing home and landscaping.",
     image: "https://framerusercontent.com/images/TwVV0BAWwyCZawRnyx5SAG5pw.png?width=2000",
   },
 ];
 
 const testimonials: Testimonial[] = [
   {
-    name: "Sarah Ahmed",
-    role: "Project Executive, Pacific Coast Builders",
+    name: "Michael Chen",
+    role: "General Contractor, Custom Homes",
     quote:
-      "Outlier kept every inspection window ahead of schedule. Their sequencing and communication made our podium build a zero-drama experience.",
+      "Outlier connected us with a structural crew that knew exactly what they were doing. Foundation inspection passed first time, zero issues.",
     image: "https://framerusercontent.com/images/qh2KkLh9KwIAd0x2gqdeR4dzFs.png?width=1200",
   },
   {
-    name: "Diego Martinez",
-    role: "VP of Development, Harbor Collective",
+    name: "Lisa Martinez",
+    role: "Homeowner, Thousand Oaks",
     quote:
-      "They choreographed night pours, vibration monitoring, and tenant updates without ever slowing us down.",
+      "Building our custom home felt overwhelming until Outlier matched us with the right foundation contractor. The process was transparent and professional.",
     image: "https://framerusercontent.com/images/11XJCHFB8cmqIzJaGCSzKLpngE0.png?width=1200",
   },
   {
-    name: "Lauren Patel",
-    role: "Asset Manager, Redwood REIT",
+    name: "David Patel",
+    role: "Developer, Multi-Family Projects",
     quote:
-      "Every embed, pour break, and crane pick was decided before mobilization. That level of rigor is rare.",
+      "For our Camarillo project we needed a crew that could handle post-tension podium work. Outlier delivered exactly what we asked for.",
     image: "https://framerusercontent.com/images/lDgLNeLO5b1a3upzgUntcyIgbA.png?width=1200",
   },
 ];
 
-const awards = [
-  { year: "2023", title: "AIAG – Best Structural Delivery" },
-  { year: "2022", title: "Boston Award for Architecture" },
-  { year: "2021", title: "US Green – Top 5 Sustainable Design" },
+const whyOutlier = [
+  { label: "Focused only on structural concrete scopes" },
+  { label: "Local to Ventura County / Conejo / West Valley" },
+  { label: "Vetted, licensed, insured crews" },
 ];
 
-const news = [
+const serviceHighlights = [
   {
-    tag: "Architecture",
-    date: "Aug 22, 2025",
-    title: "Sustainable structural design for urban infill projects",
-    image: "https://framerusercontent.com/images/hY7Zlj2aiyi3Y6c2FSSHSfGcn8.png?width=1800",
+    title: "Custom home foundations",
+    description: "Complete foundation systems for luxury and custom residential projects across Ventura County.",
   },
   {
-    tag: "Interior Design",
-    date: "Aug 22, 2025",
-    title: "Minimalist concrete interiors that stay warm & human",
-    image: "https://framerusercontent.com/images/aASNkk3iBLFb3lP2kKUf9UE2Uw.png?width=1800",
+    title: "Hillside retaining walls",
+    description: "Specialized crews for challenging terrain in Malibu, Topanga, and hillside communities.",
   },
   {
-    tag: "Construction",
-    date: "Aug 22, 2025",
-    title: "Innovative materials revolutionizing structural retrofits",
-    image: "https://framerusercontent.com/images/w3LIieXF78eoZxIfwGghXLTIQ8.png?width=1800",
+    title: "ADU & addition foundations",
+    description: "Foundation work for accessory dwelling units and major residential expansions.",
   },
 ];
 
 const team = [
-  { name: "Ava Michell", role: "Project Director" },
-  { name: "Noah Bennett", role: "Structural Engineer" },
-  { name: "Ella Monroe", role: "Field Operations" },
-  { name: "Chloe Hartley", role: "Design Strategist" },
+  { name: "Project Coordination", role: "Intake & matching" },
+  { name: "Contractor Network", role: "Vetted structural crews" },
+  { name: "Quality Oversight", role: "High-level project tracking" },
+  { name: "Client Support", role: "Communication & problem-solving" },
 ];
 
 const footerLinks = {
-  nav: ["Home", "About", "Services", "Projects", "Contact"],
+  nav: [
+    { label: "Home", href: "/" },
+    { label: "How it works", href: "/how-it-works" },
+    { label: "Service areas", href: "/service-areas" },
+    { label: "About", href: "/about" },
+    { label: "Get a bid", href: "/bid" },
+  ],
   socials: [
     { label: "Instagram", href: "https://www.instagram.com/" },
-    { label: "Twitter", href: "https://x.com" },
     { label: "LinkedIn", href: "https://linkedin.com" },
   ],
 };
@@ -272,9 +272,9 @@ const Index = () => {
           <ProcessSection />
           <FeaturedProjects currentProject={currentProject} activeIndex={projectIndex} onNavigate={nextProject} />
           <TestimonialsSection testimonial={currentTestimonial} activeIndex={testimonialIndex} onNavigate={nextTestimonial} />
-          <TeamSection />
-          <AwardsSection />
-          <NewsSection />
+          <HowWeHelpSection />
+          <WhyOutlierSection />
+          <ServiceHighlightsSection />
           <FooterSection />
         </div>
       </div>
@@ -284,28 +284,58 @@ const Index = () => {
 
 export default Index;
 
-const SiteHeader = () => (
-  <header className="sticky top-0 z-50 border-b border-white/10 bg-[#0f0f0d]/98 backdrop-blur-md">
-    <div className="relative flex items-center justify-between px-4 py-6 text-sm font-medium uppercase tracking-[0.3em] text-white/70 sm:px-6 lg:px-8">
-      <div className="flex items-center gap-4 text-white/80">
-        <Menu className="size-7" />
-        <span>Working Spaces</span>
-      </div>
-      <span className="absolute left-1/2 -translate-x-1/2 text-base font-semibold text-white/95">OUTLIER STRUCTURES</span>
-      <div className="flex items-center gap-6">
-        <a href={CONTACT_LINK} className="text-white/80 transition hover:text-white" aria-label="Email us">
-          <Mail className="size-7" />
-        </a>
-        <a 
-          href={CONTACT_LINK}
-          className="rounded-lg bg-gradient-to-r from-[hsl(22_96%_60%)] to-[hsl(32_95%_72%)] px-7 py-3.5 text-sm font-bold uppercase tracking-[0.35em] text-[hsl(23_30%_12%)] shadow-[0_12px_32px_hsl(22_96%_40%_/_0.35)] transition hover:scale-[1.02]"
+const SiteHeader = () => {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  return (
+    <header className="sticky top-0 z-50 border-b border-white/10 bg-[#0f0f0d]/98 backdrop-blur-md">
+      <div className="relative flex items-center justify-between px-4 py-6 text-sm font-medium uppercase tracking-[0.3em] text-white/70 sm:px-6 lg:px-8">
+        {/* Mobile Menu Button */}
+        <button 
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          className="flex items-center gap-4 text-white/80 lg:hidden"
+          aria-label="Toggle menu"
         >
-          Get Bid
-        </a>
+          <Menu className="size-7" />
+        </button>
+        
+        {/* Desktop Navigation */}
+        <nav className="hidden lg:flex items-center gap-6 text-xs">
+          <Link to="/" className="text-white/80 transition hover:text-white">Home</Link>
+          <Link to="/how-it-works" className="text-white/80 transition hover:text-white">How it works</Link>
+          <Link to="/service-areas" className="text-white/80 transition hover:text-white">Service areas</Link>
+          <Link to="/about" className="text-white/80 transition hover:text-white">About</Link>
+        </nav>
+        
+        <Link to="/" className="absolute left-1/2 -translate-x-1/2 text-base font-semibold text-white/95">OUTLIER STRUCTURES</Link>
+        
+        <div className="flex items-center gap-6">
+          <a href={`mailto:${CONTACT_EMAIL}`} className="hidden sm:block text-white/80 transition hover:text-white" aria-label="Email us">
+            <Mail className="size-7" />
+          </a>
+          <Link 
+            to="/bid"
+            className="rounded-lg bg-gradient-to-r from-[hsl(22_96%_60%)] to-[hsl(32_95%_72%)] px-5 py-3 sm:px-7 sm:py-3.5 text-xs sm:text-sm font-bold uppercase tracking-[0.35em] text-[hsl(23_30%_12%)] shadow-[0_12px_32px_hsl(22_96%_40%_/_0.35)] transition hover:scale-[1.02]"
+          >
+            Get Bid
+          </Link>
+        </div>
       </div>
-    </div>
-  </header>
-);
+      
+      {/* Mobile Menu */}
+      {mobileMenuOpen && (
+        <div className="lg:hidden border-t border-white/10 bg-[#0f0f0d] px-4 py-4">
+          <nav className="flex flex-col gap-4 text-sm">
+            <Link to="/" className="text-white/80 transition hover:text-white" onClick={() => setMobileMenuOpen(false)}>Home</Link>
+            <Link to="/how-it-works" className="text-white/80 transition hover:text-white" onClick={() => setMobileMenuOpen(false)}>How it works</Link>
+            <Link to="/service-areas" className="text-white/80 transition hover:text-white" onClick={() => setMobileMenuOpen(false)}>Service areas</Link>
+            <Link to="/about" className="text-white/80 transition hover:text-white" onClick={() => setMobileMenuOpen(false)}>About</Link>
+          </nav>
+        </div>
+      )}
+    </header>
+  );
+};
 
 const HeroSection = () => (
   <section className="relative w-full overflow-hidden bg-black">
@@ -314,32 +344,32 @@ const HeroSection = () => (
     <div className="relative z-10 flex min-h-[600px] flex-col justify-center gap-12 px-6 py-20 sm:min-h-[700px] sm:px-12 lg:min-h-[750px] lg:px-16">
       {/* Hero Content */}
       <div className="text-center text-white">
-        <p className="text-[0.65rem] uppercase tracking-[0.9em] text-white/50">Outlier Structures Is</p>
+        <p className="text-[0.65rem] uppercase tracking-[0.9em] text-white/50">Structural concrete, handled</p>
         <div className="mt-6 space-y-3">
           <h1 className="text-5xl font-normal uppercase leading-[1.1] sm:text-6xl lg:text-7xl">
-            SHAPING SKYLINES WITH
+            VETTED STRUCTURAL CONCRETE
           </h1>
           <div className="flex flex-col items-center justify-center gap-3 text-5xl font-normal uppercase leading-[1.1] sm:flex-row sm:gap-4 sm:text-6xl lg:text-7xl">
-            <span className="hero-highlight-box">BOLD</span>
-            <span>VISION</span>
+            <span className="hero-highlight-box">CREWS</span>
+            <span>FOR VENTURA COUNTY</span>
           </div>
         </div>
         <p className="mx-auto mt-8 max-w-2xl text-base leading-relaxed text-white/80 sm:text-lg">
-          We build more than structures—we craft timeless spaces that embody strength, inspire communities, reflect your vision, and stand as lasting legacies for generations.
+          Outlier Structures connects general contractors, developers, and serious homeowners with qualified structural concrete crews across Ventura County, Conejo Valley, West San Fernando Valley, and Malibu.
         </p>
         <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
-          <a
-            href="#projects"
+          <Link
+            to="/bid"
             className="inline-flex items-center gap-2 rounded-full bg-white px-8 py-3.5 text-sm font-semibold uppercase tracking-[0.2em] text-black transition hover:scale-[1.02]"
           >
-            Start project <ArrowUpRight className="size-4" />
-          </a>
-          <a
-            href={CONTACT_LINK}
+            Get a structural bid <ArrowUpRight className="size-4" />
+          </Link>
+          <Link
+            to="/how-it-works"
             className="inline-flex items-center gap-2 rounded-full border border-white/40 px-8 py-3.5 text-sm font-semibold uppercase tracking-[0.2em] text-white/90 transition hover:border-primary hover:bg-white/10"
           >
-            Get a structural bid <ArrowUpRight className="size-4" />
-          </a>
+            How it works <ArrowUpRight className="size-4" />
+          </Link>
         </div>
       </div>
 
@@ -429,19 +459,19 @@ const ExperienceSection = () => (
       <div className="grid gap-14 lg:grid-cols-[1.1fr,0.9fr]">
         <div>
           <SectionHeading
-            eyebrow="Legacy concrete"
-            title={["10+ years of quality", { highlight: "construction" }, "across every sector." ]}
-            description="Trusted partners delivering structural concrete for podiums, parking structures, and seismic retrofits across Southern California."
+            eyebrow="Focused expertise"
+            title={["Structural concrete", { highlight: "matching" }, "for serious projects" ]}
+            description="Outlier Structures connects your project with vetted structural concrete contractors in Ventura County, Conejo Valley, West San Fernando Valley, and Malibu."
             tone="dark"
           />
           <p className="mt-10 text-lg leading-relaxed text-black/70">
-            We embed alongside your team from preconstruction to turnover—aligning schedules, inspection checkpoints, and safety protocols with the crews that actually pour the work.
+            We match general contractors, developers, and homeowners with licensed, insured structural concrete crews who specialize in custom homes, ADUs, retaining walls, and major foundations.
           </p>
           <div className="mt-12 grid gap-6 sm:grid-cols-2">
             <div className="rounded-[32px] bg-black p-8 text-white">
               <p className="text-5xl font-semibold"><CountUp value="50+" /></p>
-              <p className="mt-2 text-base uppercase tracking-[0.35em] text-white/70">Engineers & builders</p>
-              <p className="mt-4 text-base leading-relaxed text-white/70">People who only speak structural concrete, ready to drop into your precon calls.</p>
+              <p className="mt-2 text-base uppercase tracking-[0.35em] text-white/70">Vetted contractors</p>
+              <p className="mt-4 text-base leading-relaxed text-white/70">Licensed, insured structural concrete crews across our service area.</p>
             </div>
             <div className="grid gap-6">
               <img src="https://framerusercontent.com/images/gQJjSNrLhYTUTDGcnrI63gYNc.png?width=1600" alt="Structure detail" className="grain-surface h-40 w-full rounded-[28px] object-cover" />
@@ -451,7 +481,7 @@ const ExperienceSection = () => (
         </div>
         <div className="flex flex-col justify-between gap-10 rounded-[40px] border border-black/5 bg-white/70 p-8">
           <p className="text-lg leading-relaxed text-black/70">
-            Structura offers more than just concrete—it's thoughtful design, innovation, and schedule-aligned execution built for real-world constraints.
+            Outlier Structures offers more than lead generation—we're a neutral matchmaking layer connecting your project with the right structural concrete crews for your scope and budget.
           </p>
           <div className="grid gap-6 sm:grid-cols-2">
             {statHighlights.map((stat) => (
@@ -464,12 +494,12 @@ const ExperienceSection = () => (
               </div>
             ))}
           </div>
-          <a 
-            href={CONTACT_LINK}
+          <Link 
+            to="/bid"
             className="inline-flex items-center justify-center gap-2 rounded-lg bg-black px-8 py-4 text-base font-bold uppercase tracking-[0.3em] text-white transition hover:scale-[1.02]"
           >
-            Get a project review <ArrowUpRight className="size-5" />
-          </a>
+            Get a structural bid <ArrowUpRight className="size-5" />
+          </Link>
         </div>
       </div>
     </div>
@@ -491,9 +521,9 @@ const ServicesSection = ({ activeService, currentService, onChange }: ServicesSe
           title={["Smart solutions for every", { highlight: "project" }]}
           description="Pick your structural challenge. We line up the crews, sequencing, and inspection-ready documents to execute it."
         />
-        <a href={CONTACT_LINK} className="inline-flex items-center gap-2 text-base font-bold text-white transition hover:text-primary">
-          Request a structural bid <ArrowUpRight className="size-5" />
-        </a>
+        <Link to="/bid" className="inline-flex items-center gap-2 text-base font-bold text-white transition hover:text-primary">
+          Get a structural bid <ArrowUpRight className="size-5" />
+        </Link>
         <div className="divide-y divide-white/10 rounded-[36px] border border-white/10">
           {services.map((service) => (
             <button
@@ -527,18 +557,18 @@ const ServicesSection = ({ activeService, currentService, onChange }: ServicesSe
           <p className="text-base leading-relaxed text-white/60">{currentService.expertise}</p>
         </div>
         <div className="flex flex-wrap gap-4">
-          <a 
-            href={CONTACT_LINK}
+          <Link 
+            to="/bid"
             className="inline-flex items-center gap-2 rounded-lg bg-white px-7 py-4 text-base font-bold uppercase tracking-[0.25em] text-black transition hover:scale-[1.02]"
           >
             Get a structural bid <ArrowUpRight className="size-5" />
-          </a>
-          <a 
-            href={CONTACT_LINK}
+          </Link>
+          <Link 
+            to="/how-it-works"
             className="inline-flex items-center gap-2 rounded-lg border border-white/40 px-7 py-4 text-base font-semibold uppercase tracking-[0.25em] text-white/90 transition hover:border-primary hover:bg-white/10"
           >
-            Download scope <ArrowUpRight className="size-5" />
-          </a>
+            How it works <ArrowUpRight className="size-5" />
+          </Link>
         </div>
       </div>
     </div>
@@ -570,7 +600,7 @@ type FeaturedProjectsProps = {
 const FeaturedProjects = ({ currentProject, activeIndex, onNavigate }: FeaturedProjectsProps) => (
   <section id="projects" className="space-y-8 rounded-[48px] border border-white/10 bg-black/30 p-6 sm:p-10">
     <div className="flex flex-wrap items-center justify-between gap-6">
-      <SectionHeading eyebrow="Featured" title={["Featured", { highlight: "works" }]} description="Real structural concrete work matched through Outlier Structures." />
+      <SectionHeading eyebrow="Featured" title={["Featured", { highlight: "projects" }]} description="Real structural concrete work matched through Outlier Structures across Ventura County and surrounding areas." />
       <div className="flex gap-3">
         <NavButton direction="left" onClick={() => onNavigate(-1)} />
         <NavButton direction="right" onClick={() => onNavigate(1)} />
@@ -586,8 +616,8 @@ const FeaturedProjects = ({ currentProject, activeIndex, onNavigate }: FeaturedP
         <p className="mt-3 text-sm text-white/80">{currentProject.scope}</p>
         <p className="mt-4 text-lg">“{currentProject.quote}”</p>
         <div className="mt-4 flex flex-wrap gap-3">
-          <PrimaryCTA label="Get a bid" />
-          <SecondaryCTA label="See details" />
+          <PrimaryCTA label="Get a bid" href="/bid" />
+          <SecondaryCTA label="Service areas" href="/service-areas" />
         </div>
       </div>
       <div className="absolute bottom-6 right-6 flex flex-col items-end gap-3">
@@ -642,12 +672,12 @@ const TestimonialsSection = ({ testimonial, activeIndex, onNavigate }: Testimoni
   </section>
 );
 
-const TeamSection = () => (
+const HowWeHelpSection = () => (
   <section className="rounded-[48px] border border-white/10 bg-black/30 p-6 sm:p-10">
     <SectionHeading
-      eyebrow="Team"
-      title={["Meet our dedicated team of", { highlight: "skilled" }, "experts"]}
-      description="Trusted partners who have lived every structural battle."
+      eyebrow="How we help"
+      title={["What", { highlight: "Outlier" }, "Structures does"]}
+      description="We're a neutral coordination layer connecting projects with qualified structural concrete contractors."
       align="center"
     />
     <div className="mt-10 grid gap-6 sm:grid-cols-2">
@@ -655,60 +685,51 @@ const TeamSection = () => (
         <div key={member.name} className="rounded-[28px] border border-white/10 bg-[#050505]/80 p-6 transition hover:border-primary">
           <p className="text-xs uppercase tracking-[0.6em] text-white/40">{member.role}</p>
           <p className="text-2xl font-semibold text-white">{member.name}</p>
-          <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-white/70 transition hover:text-primary">
-            LinkedIn <ArrowUpRight className="size-4" />
-          </a>
         </div>
       ))}
     </div>
   </section>
 );
 
-const AwardsSection = () => (
+const WhyOutlierSection = () => (
   <section className="grid gap-10 rounded-[48px] border border-white/10 bg-[#111111]/80 p-6 sm:p-10 lg:grid-cols-[0.8fr,1.2fr]">
     <div className="space-y-4">
-      {awards.map((award) => (
-        <div key={award.title} className="rounded-[24px] border border-white/10 bg-black/30 p-5 transition hover:border-primary">
-          <p className="text-xs uppercase tracking-[0.6em] text-white/40">{award.year}</p>
-          <p className="text-lg font-semibold text-white">{award.title}</p>
+      {whyOutlier.map((item) => (
+        <div key={item.label} className="rounded-[24px] border border-white/10 bg-black/30 p-5 transition hover:border-primary">
+          <p className="text-lg font-semibold text-white">{item.label}</p>
         </div>
       ))}
     </div>
     <div className="space-y-6">
       <SectionHeading
-        eyebrow="Recognition"
-        title={["Celebrating our proud", { highlight: "awards" }, "and achievements"]}
-        description="Dedication, expertise, and relentless execution recognized by the industry."
+        eyebrow="Why us"
+        title={["Why contractors and owners", { highlight: "work" }, "with Outlier Structures"]}
+        description="We're not a random lead generation service. We're a focused, neutral matchmaking layer for structural concrete projects."
       />
       <div className="flex flex-wrap gap-3">
-        <PrimaryCTA label="See projects" />
-        <SecondaryCTA label="Get a quote" />
+        <PrimaryCTA label="Get a bid" href="/bid" />
+        <SecondaryCTA label="About us" href="/about" />
       </div>
-      <img src="https://framerusercontent.com/images/hY7Zlj2aiyi3Y6c2FSSHSfGcn8.png?width=2000" alt="Awarded project" className="grain-surface h-64 w-full rounded-[32px] object-cover" loading="lazy" />
+      <img src="https://framerusercontent.com/images/hY7Zlj2aiyi3Y6c2FSSHSfGcn8.png?width=2000" alt="Structural concrete work" className="grain-surface h-64 w-full rounded-[32px] object-cover" loading="lazy" />
     </div>
   </section>
 );
 
-const NewsSection = () => (
+const ServiceHighlightsSection = () => (
   <section className="rounded-[48px] border border-white/10 bg-black/30 p-2">
     <div className="paper-surface rounded-[40px] p-6 sm:p-10">
       <div className="flex flex-wrap items-center justify-between gap-6">
-        <SectionHeading eyebrow="Insights" title={["Latest news and creative", { highlight: "inspiration" }]} tone="dark" />
-        <a href="#services" className="inline-flex items-center gap-2 text-sm font-semibold text-black/70 transition hover:text-primary">
-          View services <ArrowUpRight className="size-4" />
-        </a>
+        <SectionHeading eyebrow="Common scopes" title={["What we", { highlight: "specialize" }, "in"]} tone="dark" />
+        <Link to="/service-areas" className="inline-flex items-center gap-2 text-sm font-semibold text-black/70 transition hover:text-primary">
+          View service areas <ArrowUpRight className="size-4" />
+        </Link>
       </div>
       <div className="mt-8 grid gap-6 lg:grid-cols-3">
-        {news.map((article) => (
-          <article key={article.title} className="cursor-pointer rounded-[28px] border border-black/10 bg-white/80 transition hover:border-primary">
-            <img src={article.image} alt={article.title} className="h-48 w-full rounded-[28px] object-cover" loading="lazy" />
-            <div className="space-y-3 p-6 text-black">
-              <div className="text-xs uppercase tracking-[0.5em] text-black/60">
-                {article.tag} • {article.date}
-              </div>
-              <h3 className="text-xl font-semibold">{article.title}</h3>
-            </div>
-          </article>
+        {serviceHighlights.map((item) => (
+          <div key={item.title} className="rounded-[28px] border border-black/10 bg-white/80 p-6 transition hover:border-primary">
+            <h3 className="text-xl font-semibold text-black">{item.title}</h3>
+            <p className="mt-3 text-base leading-relaxed text-black/70">{item.description}</p>
+          </div>
         ))}
       </div>
     </div>
@@ -720,27 +741,29 @@ const FooterSection = () => (
     <div className="grid gap-6 rounded-[32px] border border-white/10 bg-white text-black p-6 sm:grid-cols-2">
       <div>
         <p className="text-xs uppercase tracking-[0.6em] text-black/60">Let’s talk</p>
-        <h3 className="mt-2 text-3xl font-semibold">Contact us</h3>
+        <h3 className="mt-2 text-3xl font-semibold">Get a structural bid</h3>
       </div>
       <div className="flex items-center justify-end gap-3">
-        <a href={CONTACT_LINK} className="inline-flex items-center gap-2 rounded-full border border-black/10 px-5 py-3 text-sm font-semibold transition hover:border-primary">
-          Contact us <ArrowUpRight className="size-4" />
-        </a>
-        <a href="#projects" className="inline-flex items-center gap-2 rounded-full bg-black px-5 py-3 text-sm font-semibold text-white transition hover:scale-[1.02]">
-          All projects <ArrowUpRight className="size-4" />
-        </a>
+        <Link to="/about" className="inline-flex items-center gap-2 rounded-full border border-black/10 px-5 py-3 text-sm font-semibold transition hover:border-primary">
+          About us <ArrowUpRight className="size-4" />
+        </Link>
+        <Link to="/bid" className="inline-flex items-center gap-2 rounded-full bg-black px-5 py-3 text-sm font-semibold text-white transition hover:scale-[1.02]">
+          Get a bid <ArrowUpRight className="size-4" />
+        </Link>
       </div>
     </div>
     <div className="grid gap-8 text-sm text-white/70 sm:grid-cols-[2fr,1fr]">
       <div className="space-y-3">
-        <p>Outlier Structures connects general contractors, developers, and owners with vetted structural concrete crews throughout Southern California.</p>
-        <p>(805) 555-0100 • {CONTACT_EMAIL}</p>
-        <p>21 SW Broadway, Portland</p>
+        <p>Outlier Structures connects general contractors, developers, and homeowners with vetted structural concrete contractors across Ventura County, Conejo Valley, West San Fernando Valley, and Malibu.</p>
+        <p>{CONTACT_PHONE} • {CONTACT_EMAIL}</p>
+        <p>Serving Thousand Oaks and surrounding areas</p>
       </div>
       <div className="grid gap-3 sm:grid-cols-2">
         <div>
           {footerLinks.nav.map((item) => (
-            <p key={item}>{item}</p>
+            <p key={item.label}>
+              <Link to={item.href} className="transition hover:text-primary">{item.label}</Link>
+            </p>
           ))}
         </div>
         <div>
@@ -792,9 +815,9 @@ const SectionHeading = ({ eyebrow, title, description, align = "left", tone = "l
   );
 };
 
-const PrimaryCTA = ({ label, dark = false, href = CONTACT_LINK }: { label: string; dark?: boolean; href?: string }) => (
-  <a
-    href={href}
+const PrimaryCTA = ({ label, dark = false, href = "/bid" }: { label: string; dark?: boolean; href?: string }) => (
+  <Link
+    to={href}
     className={cn(
       "inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition",
       dark ? "bg-black text-white hover:bg-black/90" : "bg-white text-black hover:scale-[1.02]",
@@ -802,17 +825,17 @@ const PrimaryCTA = ({ label, dark = false, href = CONTACT_LINK }: { label: strin
   >
     {label}
     <ArrowUpRight className="size-4" />
-  </a>
+  </Link>
 );
 
-const SecondaryCTA = ({ label, href = CONTACT_LINK }: { label: string; href?: string }) => (
-  <a
-    href={href}
+const SecondaryCTA = ({ label, href = "/how-it-works" }: { label: string; href?: string }) => (
+  <Link
+    to={href}
     className="inline-flex items-center gap-2 rounded-full border border-white/40 px-5 py-3 text-sm font-semibold text-white/80 transition hover:border-primary hover:text-white"
   >
     {label}
     <ArrowUpRight className="size-4" />
-  </a>
+  </Link>
 );
 
 const NavButton = ({ direction, onClick }: { direction: "left" | "right"; onClick: () => void }) => (
