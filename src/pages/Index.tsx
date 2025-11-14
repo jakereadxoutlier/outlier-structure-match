@@ -43,7 +43,7 @@ type Testimonial = {
 
 const CONTACT_EMAIL = "hello@outlierstructures.com";
 const CONTACT_PHONE = "(805) 555-0100";
-const heroImage = "/images/u7626387911_concrete_construction_jobsites_--v_7_e71bdcfd-372c-4cd6-aac1-cea1b4ead73e_0.png";
+const heroImage = "https://framerusercontent.com/images/FVyQv90OMyWJQAyRfCesHadT8Q.png?width=2400";
 
 const logoPlaceholders = [
   "Partner 1",
