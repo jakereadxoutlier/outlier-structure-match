@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-import { ArrowLeft, ArrowUpRight, CheckCircle2, FileText, Users, ThumbsUp, ArrowRight } from "lucide-react";
+import { ArrowUpRight, CheckCircle2, FileText, Users, ThumbsUp, ArrowRight } from "lucide-react";
+import { SharedHeader } from "@/components/SharedHeader";
 
 const HowItWorks = () => {
   const steps = [
@@ -39,7 +40,7 @@ const HowItWorks = () => {
         <div className="grain-surface absolute inset-0 rounded-none" />
       </div>
 
-      <SiteHeader />
+      <SharedHeader />
 
       <div className="relative">
         {/* Hero Section */}
@@ -49,7 +50,7 @@ const HowItWorks = () => {
             How <span className="highlight-pill">Outlier Structures</span> works
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-white/80">
-            A visible, documented process from intake through turnover. No guesswork, no vibe-coded chaos.
+            A straightforward path from project submission to contractor selection. Transparent, efficient, and built for your success.
           </p>
         </section>
 
@@ -121,23 +122,3 @@ const HowItWorks = () => {
 };
 
 export default HowItWorks;
-
-const SiteHeader = () => (
-  <header className="sticky top-0 z-50 border-b border-white/10 bg-[#0f0f0d]/98 backdrop-blur-md">
-    <div className="relative flex items-center justify-between px-4 py-6 text-sm font-medium uppercase tracking-[0.3em] text-white/70 sm:px-6 lg:px-8">
-      <Link to="/" className="flex items-center gap-4 text-white/80 transition hover:text-white">
-        <ArrowLeft className="size-6" />
-        <span>Back to home</span>
-      </Link>
-      <Link to="/" className="absolute left-1/2 -translate-x-1/2 text-base font-semibold text-white/95">
-        OUTLIER STRUCTURES
-      </Link>
-      <Link
-        to="/bid"
-        className="rounded-lg bg-gradient-to-r from-[hsl(22_96%_60%)] to-[hsl(32_95%_72%)] px-7 py-3.5 text-sm font-bold uppercase tracking-[0.35em] text-[hsl(23_30%_12%)] shadow-[0_12px_32px_hsl(22_96%_40%_/_0.35)] transition hover:scale-[1.02]"
-      >
-        Get Bid
-      </Link>
-    </div>
-  </header>
-);

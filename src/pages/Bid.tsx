@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowLeft, ArrowUpRight, CheckCircle2 } from "lucide-react";
+import { ArrowUpRight, CheckCircle2, ArrowLeft } from "lucide-react";
+import { SharedHeader } from "@/components/SharedHeader";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -71,7 +72,7 @@ const Bid = () => {
           <div className="grain-surface absolute inset-0 rounded-none" />
         </div>
 
-        <SiteHeader />
+        <SharedHeader />
 
         <div className="relative">
           <div className="mx-auto max-w-3xl px-4 py-32 sm:px-6">
@@ -107,11 +108,11 @@ const Bid = () => {
         <div className="grain-surface absolute inset-0 rounded-none" />
       </div>
 
-      <SiteHeader />
+      <SharedHeader />
 
       <div className="relative">
-        <div className="mx-auto max-w-6xl px-4 py-32 sm:px-6">
-          <div className="grid gap-10 lg:grid-cols-[1fr,0.8fr]">
+        <div className="mx-auto max-w-7xl px-4 py-32 sm:px-6 lg:px-8">
+          <div className="grid gap-10 lg:grid-cols-[1.2fr,0.8fr]">
             {/* Left Column - Form */}
             <div className="rounded-[48px] border border-white/10 bg-black/30 p-3">
               <div className="paper-surface rounded-[40px] p-8 sm:p-12">
@@ -123,7 +124,7 @@ const Bid = () => {
                     Get a structural concrete bid
                   </h1>
                   <p className="mt-4 text-base leading-relaxed text-black/70">
-                    Outlier Structures connects your project with vetted structural concrete contractors across Ventura County, Conejo Valley, the West San Fernando Valley, and Malibu. Share your plans and timing and we'll route it through a curated bid path.
+                    Outlier Structures connects ultra-luxury custom home projects and commercial developments with elite structural concrete contractors across Ventura County, Conejo Valley, West San Fernando Valley, Malibu, and Topanga. Ideal for high-complexity structural packages from $200k to $5M.
                   </p>
                 </div>
 
@@ -158,9 +159,10 @@ const Bid = () => {
                           <SelectValue placeholder="Select your role" />
                         </SelectTrigger>
                         <SelectContent>
-                          <SelectItem value="homeowner">Homeowner</SelectItem>
+                          <SelectItem value="homeowner">Ultra-Luxury Homeowner</SelectItem>
                           <SelectItem value="gc">General Contractor</SelectItem>
-                          <SelectItem value="developer">Developer</SelectItem>
+                          <SelectItem value="developer">Developer / Owner's Rep</SelectItem>
+                          <SelectItem value="architect">Architect / Engineer</SelectItem>
                           <SelectItem value="other">Other</SelectItem>
                         </SelectContent>
                       </Select>
@@ -235,11 +237,11 @@ const Bid = () => {
                       </Label>
                       <div className="space-y-3">
                         {[
-                          { id: "custom-home", label: "Custom home foundation and slab" },
-                          { id: "addition-adu", label: "Major addition or ADU" },
-                          { id: "retaining", label: "Retaining walls / hillside stabilization" },
-                          { id: "podium", label: "Podium or structural slab" },
-                          { id: "flatwork", label: "Structural flatwork / other" },
+                          { id: "ultra-luxury-home", label: "Ultra-luxury custom home foundation & structural package" },
+                          { id: "hillside-complex", label: "Hillside / complex site retaining & stabilization" },
+                          { id: "commercial", label: "Commercial structural concrete" },
+                          { id: "podium-slab", label: "Podium slab / parking structure" },
+                          { id: "mixed-use", label: "Large-scale mixed-use or multi-family" },
                         ].map((type) => (
                           <div key={type.id} className="flex items-center space-x-2">
                             <Checkbox
@@ -299,11 +301,12 @@ const Bid = () => {
                           <SelectValue placeholder="Select budget range" />
                         </SelectTrigger>
                         <SelectContent>
-                          <SelectItem value="under-50k">Under $50k</SelectItem>
-                          <SelectItem value="50k-100k">$50k – $100k</SelectItem>
-                          <SelectItem value="100k-250k">$100k – $250k</SelectItem>
-                          <SelectItem value="250k-500k">$250k – $500k</SelectItem>
-                          <SelectItem value="500k-plus">$500k+</SelectItem>
+                          <SelectItem value="under-200k">Under $200k</SelectItem>
+                          <SelectItem value="200k-500k">$200k – $500k</SelectItem>
+                          <SelectItem value="500k-1m">$500k – $1M</SelectItem>
+                          <SelectItem value="1m-3m">$1M – $3M</SelectItem>
+                          <SelectItem value="3m-5m">$3M – $5M</SelectItem>
+                          <SelectItem value="5m-plus">$5M+</SelectItem>
                         </SelectContent>
                       </Select>
                     </div>
@@ -400,12 +403,12 @@ const Bid = () => {
                 <h3 className="text-2xl font-semibold">Why Outlier Structures?</h3>
                 <ul className="mt-6 space-y-4">
                   {[
-                    "Vetted structural crews only",
-                    "Ideal for $50k–$500k projects",
-                    "Custom homes, additions, ADUs, retaining walls",
-                    "You keep control over who you hire",
-                    "Local to Ventura County and Conejo Valley",
-                    "Fast, realistic bids from experienced crews",
+                    "Elite structural crews for ultra-luxury & commercial",
+                    "Optimized for $200k–$5M structural packages",
+                    "Ultra-luxury homes, hillside, and commercial projects",
+                    "High-complexity foundations, retaining, and podium work",
+                    "Local to Ventura, Conejo, West Valley, Malibu, Topanga",
+                    "You keep control over contractor selection",
                   ].map((item) => (
                     <li key={item} className="flex items-start gap-3">
                       <CheckCircle2 className="mt-0.5 size-5 shrink-0 text-[hsl(var(--primary))]" />
@@ -433,18 +436,3 @@ const Bid = () => {
 };
 
 export default Bid;
-
-const SiteHeader = () => (
-  <header className="sticky top-0 z-50 border-b border-white/10 bg-[#0f0f0d]/98 backdrop-blur-md">
-    <div className="relative flex items-center justify-between px-4 py-6 text-sm font-medium uppercase tracking-[0.3em] text-white/70 sm:px-6 lg:px-8">
-      <Link to="/" className="flex items-center gap-4 text-white/80 transition hover:text-white">
-        <ArrowLeft className="size-6" />
-        <span>Back to home</span>
-      </Link>
-      <Link to="/" className="absolute left-1/2 -translate-x-1/2 text-base font-semibold text-white/95">
-        OUTLIER STRUCTURES
-      </Link>
-      <div className="w-32" /> {/* Spacer for centering */}
-    </div>
-  </header>
-);
