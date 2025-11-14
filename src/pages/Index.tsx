@@ -1,28 +1,32 @@
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
+import { TrustedStrip } from "@/components/TrustedStrip";
 import { WhoWeServe } from "@/components/WhoWeServe";
-import { ServicesGrid } from "@/components/ServicesGrid";
+import { Services } from "@/components/Services";
 import { HowItWorks } from "@/components/HowItWorks";
-import { ResultsProof } from "@/components/ResultsProof";
-import { ProjectsGallery } from "@/components/ProjectsGallery";
-import { MainBidForm } from "@/components/MainBidForm";
+import { Projects } from "@/components/Projects";
 import { WhyOutlier } from "@/components/WhyOutlier";
+import { LeadForm } from "@/components/LeadForm";
 import { FAQ } from "@/components/FAQ";
+import { FinalCTA } from "@/components/FinalCTA";
 import { Footer } from "@/components/Footer";
 
 const Index = () => {
   return (
-    <div className="min-h-screen">
+    <div className="bg-gradient-to-b from-slate-950 to-slate-900 text-slate-50 min-h-screen">
       <Header />
-      <Hero />
-      <WhoWeServe />
-      <ServicesGrid />
-      <HowItWorks />
-      <ResultsProof />
-      <ProjectsGallery />
-      <MainBidForm />
-      <WhyOutlier />
-      <FAQ />
+      <main className="relative">
+        <Hero />
+        <TrustedStrip />
+        <WhoWeServe />
+        <Services />
+        <HowItWorks />
+        <Projects />
+        <WhyOutlier />
+        <LeadForm />
+        <FAQ />
+        <FinalCTA />
+      </main>
       <Footer />
     </div>
   );
