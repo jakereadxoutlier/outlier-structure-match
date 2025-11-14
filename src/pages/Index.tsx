@@ -267,7 +267,7 @@ const Index = () => {
         <HeroSection />
         <PartnerStrip />
         
-        <div className="relative mx-auto flex max-w-6xl flex-col gap-20 px-4 pb-24 pt-20 sm:px-6 lg:px-0">
+        <div className="relative mx-auto flex max-w-6xl flex-col gap-12 sm:gap-16 md:gap-20 px-4 pb-16 pt-12 sm:pb-24 sm:pt-20 sm:px-6 lg:px-0">
           <ExperienceSection />
           <ServicesSection activeService={activeService} currentService={currentService} onChange={setActiveService} />
           <ProcessSection />
@@ -292,13 +292,13 @@ const HeroSection = () => (
     <div className="relative z-10 flex min-h-[600px] flex-col justify-center gap-12 px-6 py-20 sm:min-h-[700px] sm:px-12 lg:min-h-[750px] lg:px-16">
       {/* Hero Content */}
       <div className="text-center text-white">
-        <p className="text-[0.65rem] uppercase tracking-[0.9em] text-white/50">Ultra-luxury structural concrete</p>
+        <p className="text-[0.65rem] uppercase tracking-[0.5em] sm:tracking-[0.9em] text-white/50">Ultra-luxury structural concrete</p>
         <div className="mt-6 space-y-3">
-          <div className="flex flex-col items-center justify-center gap-3 text-5xl font-normal uppercase leading-[1.1] sm:flex-row sm:gap-4 sm:text-6xl lg:text-7xl">
+          <div className="flex flex-col items-center justify-center gap-2 text-4xl font-normal uppercase leading-[1.1] sm:flex-row sm:gap-4 sm:text-6xl lg:text-7xl">
             <span>ELITE</span>
             <span className="hero-highlight-box">STRUCTURAL CONCRETE</span>
           </div>
-          <h1 className="text-5xl font-normal uppercase leading-[1.1] sm:text-6xl lg:text-7xl">
+          <h1 className="text-4xl font-normal uppercase leading-[1.1] sm:text-6xl lg:text-7xl">
             FOR ULTRA-LUXURY & COMMERCIAL
           </h1>
         </div>
@@ -308,13 +308,13 @@ const HeroSection = () => (
         <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
           <Link
             to="/bid"
-            className="inline-flex items-center gap-2 rounded-full bg-white px-8 py-3.5 text-sm font-semibold uppercase tracking-[0.2em] text-black transition hover:scale-[1.02]"
+            className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-xs sm:px-8 sm:py-3.5 sm:text-sm font-semibold uppercase tracking-[0.1em] sm:tracking-[0.2em] text-black transition hover:scale-[1.02]"
           >
             Get a structural bid <ArrowUpRight className="size-4" />
           </Link>
           <Link
             to="/how-it-works"
-            className="inline-flex items-center gap-2 rounded-full border border-white/40 px-8 py-3.5 text-sm font-semibold uppercase tracking-[0.2em] text-white/90 transition hover:border-primary hover:bg-white/10"
+            className="inline-flex items-center gap-2 rounded-full border border-white/40 px-6 py-3 text-xs sm:px-8 sm:py-3.5 sm:text-sm font-semibold uppercase tracking-[0.1em] sm:tracking-[0.2em] text-white/90 transition hover:border-primary hover:bg-white/10"
           >
             How it works <ArrowUpRight className="size-4" />
           </Link>
@@ -322,7 +322,7 @@ const HeroSection = () => (
       </div>
 
       {/* Bottom Ticker */}
-      <div className="flex items-center justify-center gap-8 text-[0.65rem] uppercase tracking-[0.85em] text-white/35">
+      <div className="flex items-center justify-center gap-4 sm:gap-8 text-[0.6rem] sm:text-[0.65rem] uppercase tracking-[0.4em] sm:tracking-[0.85em] text-white/35">
         <span>Start project</span>
         <span className="text-white/20">Start project</span>
       </div>
@@ -403,7 +403,7 @@ const CountUp = ({ value, duration = 2000 }: { value: string; duration?: number 
 
 const ExperienceSection = () => (
   <section className="rounded-[56px] border border-white/10 bg-black/30 p-3">
-    <div className="paper-surface rounded-[48px] p-10 sm:p-14 lg:p-16">
+    <div className="paper-surface rounded-[48px] p-6 sm:p-10 md:p-14 lg:p-16">
       <div className="grid gap-14 lg:grid-cols-[1.1fr,0.9fr]">
         <div>
           <SectionHeading
@@ -418,7 +418,7 @@ const ExperienceSection = () => (
           <div className="mt-12 grid gap-6 sm:grid-cols-2">
             <div className="rounded-[32px] bg-black p-8 text-white">
               <p className="text-5xl font-semibold"><CountUp value="50+" /></p>
-              <p className="mt-2 text-base uppercase tracking-[0.35em] text-white/70">Elite contractors</p>
+              <p className="mt-2 text-base uppercase tracking-[0.2em] sm:tracking-[0.35em] text-white/70">Elite contractors</p>
               <p className="mt-4 text-base leading-relaxed text-white/70">Elite structural concrete specialists for ultra-luxury and commercial projects.</p>
             </div>
             <div className="grid gap-6">
@@ -439,14 +439,14 @@ const ExperienceSection = () => (
                   <p className="text-3xl font-semibold text-black">
                     {stat.isNumeric ? <CountUp value={stat.value} /> : stat.value}
                   </p>
-                  <p className="mt-1 text-sm uppercase tracking-[0.4em] text-black/50">{stat.label}</p>
+                  <p className="mt-1 text-sm uppercase tracking-[0.2em] sm:tracking-[0.4em] text-black/50">{stat.label}</p>
                 </div>
               </div>
             ))}
           </div>
           <Link 
             to="/bid"
-            className="inline-flex items-center justify-center gap-2 rounded-lg bg-black px-8 py-4 text-base font-bold uppercase tracking-[0.3em] text-white transition hover:scale-[1.02]"
+            className="inline-flex items-center justify-center gap-2 rounded-lg bg-black px-6 py-3 text-sm sm:px-8 sm:py-4 sm:text-base font-bold uppercase tracking-[0.15em] sm:tracking-[0.3em] text-white transition hover:scale-[1.02]"
           >
             Get a structural bid <ArrowUpRight className="size-5" />
           </Link>
@@ -588,15 +588,38 @@ type FeaturedProjectsProps = {
 };
 
 const FeaturedProjects = ({ currentProject, activeIndex, onNavigate }: FeaturedProjectsProps) => (
-  <section id="projects" className="space-y-8 rounded-[48px] border border-white/10 bg-black/30 p-6 sm:p-10">
-    <div className="flex flex-wrap items-center justify-between gap-6">
+  <section id="projects" className="space-y-6 sm:space-y-8 rounded-[32px] sm:rounded-[48px] border border-white/10 bg-black/30 p-3 sm:p-6 md:p-10">
+    <div className="flex flex-wrap items-center justify-between gap-4 sm:gap-6 px-2 sm:px-0">
       <SectionHeading eyebrow="Featured" title={["Featured", { highlight: "projects" }]} description="Real structural concrete work matched through Outlier Structures across Ventura County and surrounding areas." />
       <div className="flex gap-3">
         <NavButton direction="left" onClick={() => onNavigate(-1)} />
         <NavButton direction="right" onClick={() => onNavigate(1)} />
       </div>
     </div>
-    <div className="relative overflow-hidden rounded-[36px] border border-white/10">
+    
+    {/* Mobile Layout - Stacked */}
+    <div className="md:hidden space-y-4 rounded-[24px] border border-white/10 bg-gradient-to-b from-[#141414] to-[#050505] overflow-hidden">
+      <div className="relative h-64">
+        <img key={currentProject.id} src={currentProject.image} alt={currentProject.title} className="h-full w-full object-cover" loading="lazy" />
+        <div className="absolute top-3 right-3 flex items-center gap-2">
+          <DotIndicators count={projects.length} activeIndex={activeIndex} />
+        </div>
+      </div>
+      <div className="px-5 pb-6 text-white space-y-3">
+        <p className="text-[0.7rem] uppercase tracking-[0.25em] text-[hsl(var(--primary))]">{currentProject.tag}</p>
+        <h3 className="text-2xl font-semibold">{currentProject.title}</h3>
+        <p className="text-sm text-white/70">{currentProject.location}</p>
+        <p className="text-sm text-white/80">{currentProject.scope}</p>
+        <p className="text-base leading-relaxed text-white/90">"{currentProject.quote}"</p>
+        <div className="flex flex-wrap gap-3 pt-2">
+          <PrimaryCTA label="Get a bid" href="/bid" />
+          <SecondaryCTA label="Service areas" href="/service-areas" />
+        </div>
+      </div>
+    </div>
+
+    {/* Desktop/Tablet Layout - Overlay */}
+    <div className="hidden md:block relative overflow-hidden rounded-[36px] border border-white/10">
       <img key={currentProject.id} src={currentProject.image} alt={currentProject.title} className="h-[28rem] w-full object-cover" loading="lazy" />
       <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
       <div className="absolute bottom-6 left-6 max-w-md rounded-[32px] border border-white/10 bg-black/70 p-6 text-white">
@@ -604,7 +627,7 @@ const FeaturedProjects = ({ currentProject, activeIndex, onNavigate }: FeaturedP
         <h3 className="text-2xl font-semibold">{currentProject.title}</h3>
         <p className="text-white/70">{currentProject.location}</p>
         <p className="mt-3 text-sm text-white/80">{currentProject.scope}</p>
-        <p className="mt-4 text-lg">“{currentProject.quote}”</p>
+        <p className="mt-4 text-lg">"{currentProject.quote}"</p>
         <div className="mt-4 flex flex-wrap gap-3">
           <PrimaryCTA label="Get a bid" href="/bid" />
           <SecondaryCTA label="Service areas" href="/service-areas" />
@@ -786,8 +809,8 @@ const SectionHeading = ({ eyebrow, title, description, align = "left", tone = "l
 
   return (
     <div className={cn("max-w-3xl", align === "center" && "mx-auto text-center")}>
-      {eyebrow && <p className={cn("text-xs font-semibold uppercase tracking-[0.7em]", eyebrowText)}>{eyebrow}</p>}
-      <h2 className={cn("mt-3 text-3xl font-semibold leading-tight sm:text-4xl", baseText, align === "center" && "sm:text-5xl")}>
+      {eyebrow && <p className={cn("text-xs font-semibold uppercase tracking-[0.3em] sm:tracking-[0.7em]", eyebrowText)}>{eyebrow}</p>}
+      <h2 className={cn("mt-3 text-2xl font-semibold leading-tight sm:text-3xl md:text-4xl", baseText, align === "center" && "md:text-5xl")}>
       {title.map((chunk, index) =>
         typeof chunk === "string" ? (
             <span key={`${chunk}-${index}`}>{chunk} </span>

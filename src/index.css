@@ -212,7 +212,7 @@ All colors MUST be HSL.
 
   .logo-scroll-track {
     display: flex;
-    animation: logo-scroll 25s linear infinite;
+    animation: logo-scroll 8s linear infinite;
     will-change: transform;
   }
 

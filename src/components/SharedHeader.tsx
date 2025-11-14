@@ -10,6 +10,11 @@ export const SharedHeader = () => {
   return (
     <header className="sticky top-0 z-50 border-b border-white/10 bg-[#0f0f0d]/98 backdrop-blur-md">
       <div className="relative flex items-center justify-between px-4 py-6 text-sm font-medium uppercase tracking-[0.3em] text-white/70 sm:px-6 lg:px-8">
+        {/* Logo - Left Side */}
+        <Link to="/" className="shrink-0">
+          <img src="/outlier-logo.svg" alt="Outlier Structures" className="h-20 w-auto sm:h-24 lg:h-28 opacity-90 hover:opacity-100 transition-opacity" />
+        </Link>
+        
         {/* Mobile Menu Button */}
         <button 
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -19,18 +24,15 @@ export const SharedHeader = () => {
           <Menu className="size-7" />
         </button>
         
-        {/* Desktop Navigation */}
-        <nav className="hidden lg:flex items-center gap-6 text-xs">
+        {/* Desktop Navigation - Center */}
+        <nav className="hidden lg:flex absolute left-1/2 -translate-x-1/2 items-center gap-6 text-xs">
           <Link to="/" className="text-white/80 transition hover:text-white">Home</Link>
           <Link to="/how-it-works" className="text-white/80 transition hover:text-white">How it works</Link>
           <Link to="/service-areas" className="text-white/80 transition hover:text-white">Service areas</Link>
           <Link to="/about" className="text-white/80 transition hover:text-white">About</Link>
         </nav>
         
-        <Link to="/" className="absolute left-1/2 -translate-x-1/2 text-base font-semibold text-white/95">
-          OUTLIER STRUCTURES
-        </Link>
-        
+        {/* Right Side Actions */}
         <div className="flex items-center gap-6">
           <a href={`mailto:${CONTACT_EMAIL}`} className="hidden sm:block text-white/80 transition hover:text-white" aria-label="Email us">
             <Mail className="size-7" />
