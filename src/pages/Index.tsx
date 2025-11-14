@@ -43,7 +43,7 @@ type Testimonial = {
 
 const CONTACT_EMAIL = "hello@outlierstructures.com";
 const CONTACT_PHONE = "(805) 555-0100";
-const heroImage = "https://framerusercontent.com/images/FVyQv90OMyWJQAyRfCesHadT8Q.png?width=2400";
+const heroImage = "/images/u7626387911_concrete_construction_jobsites_--v_7_e71bdcfd-372c-4cd6-aac1-cea1b4ead73e_0.png";
 
 const logoPlaceholders = [
   "Partner 1",
@@ -71,7 +71,7 @@ const services: Service[] = [
       "Complete structural systems for ultra-luxury custom homes: foundations, slabs, retaining, basements, and complex architectural concrete. Projects typically $500k-$3M structural scope.",
     expertise:
       "Elite crews experienced with architectural concrete, exposed aggregate, complex forming, waterproofing, and finish-grade coordination for estates where quality is paramount.",
-    image: "https://framerusercontent.com/images/dImXQCCyieTCNnOOGH9tSqckO0.png?width=1600",
+    image: "/images/u7626387911_luxury_malibu_home_--ar_43_--v_7_1eba2eb2-8b7a-47d1-a83b-0e643d37ce1a_0.png",
   },
   {
     slug: "hillside-complex",
@@ -82,7 +82,7 @@ const services: Service[] = [
       "Engineered retaining systems, caissons, grade beams, and slope stabilization for challenging hillside sites in Malibu, Topanga, and canyon properties. Typical projects $300k-$2M.",
     expertise:
       "Specialized crews with hillside access expertise, seismic reinforcement, drainage integration, and geotechnical coordination for high-value coastal and canyon estates.",
-    image: "https://framerusercontent.com/images/5f8pIe6jceTfDhrYmTvIbWcU6Q.png?width=1600",
+    image: "/images/u7626387911_concrete_construction_jobsites_--v_7_e71bdcfd-372c-4cd6-aac1-cea1b4ead73e_1.png",
   },
   {
     slug: "commercial",
@@ -93,7 +93,7 @@ const services: Service[] = [
       "Structural packages for offices, retail, hospitality, and institutional projects. Podium slabs, parking structures, tilt-up, and large-scale flatwork. Projects $400k-$5M structural scope.",
     expertise:
       "Coordination of post-tension systems, MEP blocking, inspection sequences, and phased construction to keep commercial timelines on track.",
-    image: "https://framerusercontent.com/images/9jSgyFhNM7HwVGIR8VBmInmKsAA.png?width=1600",
+    image: "/images/u7626387911_commercial_concrete_construction_job_sites_--v_7_e41b0cd3-6a8d-48fb-a64f-c8a1b29d7f65_0.png",
   },
   {
     slug: "large-commercial",
@@ -104,7 +104,7 @@ const services: Service[] = [
       "Multi-story podium slabs, parking structures, and structural systems for large commercial and mixed-use developments. Typical projects $1M-$5M+ structural scope.",
     expertise:
       "Elite crews with experience coordinating complex forming, multiple pour sequences, shoring, and phased construction for major commercial projects.",
-    image: "https://framerusercontent.com/images/alizrf3Wt4MdRldkrhcVS2X1KM.png?width=1600",
+    image: "/images/u7626387911_commercial_concrete_construction_job_sites_--v_7_e41b0cd3-6a8d-48fb-a64f-c8a1b29d7f65_1.png",
   },
   {
     slug: "preconstruction",
@@ -115,7 +115,7 @@ const services: Service[] = [
       "Early-stage structural planning, scope refinement, and bid coordination for ultra-luxury and commercial projects. Lock in realistic budgets before breaking ground.",
     expertise:
       "We help owners, developers, and GCs pressure-test structural plans, identify value engineering opportunities, and secure competitive bids from elite crews.",
-    image: "https://framerusercontent.com/images/ADTZ3vdyrEoaV3vHZUb6yuLtjkw.png?width=1600",
+    image: "/images/u7626387911_concrete_construction_jobsites_--v_7_e71bdcfd-372c-4cd6-aac1-cea1b4ead73e_2.png",
   },
 ];
 
@@ -150,7 +150,7 @@ const projects: Project[] = [
     location: "Malibu, CA",
     scope: "$1.8M structural package: foundation, retaining, caissons",
     quote: "Complex hillside site with challenging ocean-view grades. Elite crew coordinated structural engineering, geotechnical, and inspection sequencing flawlessly.",
-    image: "https://framerusercontent.com/images/EKD4vt3mEzgUxiSxJs5zn6z0LA.png?width=2000",
+    image: "/images/u7626387911_luxury_malibu_home_--ar_43_--v_7_1eba2eb2-8b7a-47d1-a83b-0e643d37ce1a_2.png",
   },
   {
     id: "thousand-oaks-commercial",
@@ -159,7 +159,7 @@ const projects: Project[] = [
     location: "Thousand Oaks, CA",
     scope: "$2.4M podium slab and parking structure",
     quote: "Multi-story post-tension podium over two-level parking. Crew delivered phased pours on schedule with zero downstream trade delays.",
-    image: "https://framerusercontent.com/images/zXEQOh2Nj8nmcHurMBrAYR1Q.png?width=2000",
+    image: "/images/u7626387911_commercial_concrete_construction_job_sites_--v_7_e41b0cd3-6a8d-48fb-a64f-c8a1b29d7f65_2.png",
   },
   {
     id: "westlake-luxury",
@@ -168,7 +168,7 @@ const projects: Project[] = [
     location: "Westlake Village, CA",
     scope: "$950k foundation, slab, and architectural concrete",
     quote: "Ultra-luxury custom home with exposed aggregate, architectural forming, and complex waterproofing. Foundation inspection passed first review.",
-    image: "https://framerusercontent.com/images/TwVV0BAWwyCZawRnyx5SAG5pw.png?width=2000",
+    image: "/images/u7626387911_luxury_malibu_home_--ar_43_--v_7_1eba2eb2-8b7a-47d1-a83b-0e643d37ce1a_3.png",
   },
 ];
 
@@ -178,21 +178,21 @@ const testimonials: Testimonial[] = [
     role: "General Contractor, Custom Homes",
     quote:
       "Outlier connected us with a structural crew that knew exactly what they were doing. Foundation inspection passed first time, zero issues.",
-    image: "https://framerusercontent.com/images/qh2KkLh9KwIAd0x2gqdeR4dzFs.png?width=1200",
+    image: "/images/istockphoto-1404294992-612x612.jpg",
   },
   {
     name: "Lisa Martinez",
     role: "Homeowner, Thousand Oaks",
     quote:
       "Building our custom home felt overwhelming until Outlier matched us with the right foundation contractor. The process was transparent and professional.",
-    image: "https://framerusercontent.com/images/11XJCHFB8cmqIzJaGCSzKLpngE0.png?width=1200",
+    image: "/images/istockphoto-2163336180-612x612.jpg",
   },
   {
     name: "David Patel",
     role: "Developer, Multi-Family Projects",
     quote:
       "For our Camarillo project we needed a crew that could handle post-tension podium work. Outlier delivered exactly what we asked for.",
-    image: "https://framerusercontent.com/images/lDgLNeLO5b1a3upzgUntcyIgbA.png?width=1200",
+    image: "/images/Photo-2.jpg",
   },
 ];
 
@@ -422,8 +422,8 @@ const ExperienceSection = () => (
               <p className="mt-4 text-base leading-relaxed text-white/70">Elite structural concrete specialists for ultra-luxury and commercial projects.</p>
             </div>
             <div className="grid gap-6">
-              <img src="https://framerusercontent.com/images/gQJjSNrLhYTUTDGcnrI63gYNc.png?width=1600" alt="Structure detail" className="grain-surface h-40 w-full rounded-[28px] object-cover" />
-              <img src="https://framerusercontent.com/images/ADTZ3vdyrEoaV3vHZUb6yuLtjkw.png?width=1600" alt="Modern building" className="grain-surface h-40 w-full rounded-[28px] object-cover" />
+              <img src="/images/u7626387911_concrete_construction_jobsites_--v_7_e71bdcfd-372c-4cd6-aac1-cea1b4ead73e_3.png" alt="Structure detail" className="grain-surface h-40 w-full rounded-[28px] object-cover" />
+              <img src="/images/u7626387911_commercial_concrete_construction_job_sites_--v_7_e41b0cd3-6a8d-48fb-a64f-c8a1b29d7f65_3.png" alt="Modern building" className="grain-surface h-40 w-full rounded-[28px] object-cover" />
             </div>
           </div>
         </div>
@@ -638,7 +638,7 @@ const TestimonialsSection = ({ testimonial, activeIndex, onNavigate }: Testimoni
     </div>
     <div className="grid gap-8 lg:grid-cols-[1.1fr,0.9fr]">
       <div className="relative overflow-hidden rounded-[36px] border border-white/10">
-        <img src="https://framerusercontent.com/images/bdSG1gTCDTSMHQAPVui8ujlcWkc.png?width=2200" alt="Testimonial backdrop" className="h-full w-full object-cover" loading="lazy" />
+        <img src="/images/yolanda-hadid-outside.jpg" alt="Testimonial backdrop" className="h-full w-full object-cover" loading="lazy" />
         <div className="absolute inset-0 bg-gradient-to-r from-black via-black/70 to-transparent" />
       </div>
       <div className="space-y-6 rounded-[32px] border border-white/10 bg-black/60 p-8 text-white">
@@ -700,7 +700,7 @@ const WhyOutlierSection = () => (
         <PrimaryCTA label="Get a bid" href="/bid" />
         <SecondaryCTA label="About us" href="/about" />
       </div>
-      <img src="https://framerusercontent.com/images/hY7Zlj2aiyi3Y6c2FSSHSfGcn8.png?width=2000" alt="Structural concrete work" className="grain-surface h-64 w-full rounded-[32px] object-cover" loading="lazy" />
+      <img src="/images/shutterstock_1600353880-scaled.jpg" alt="Structural concrete work" className="grain-surface h-64 w-full rounded-[32px] object-cover" loading="lazy" />
     </div>
   </section>
 );
