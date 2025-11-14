@@ -308,7 +308,7 @@ const HeroSection = () => (
         <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
           <Link
             to="/bid"
-            className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-xs sm:px-8 sm:py-3.5 sm:text-sm font-semibold uppercase tracking-[0.1em] sm:tracking-[0.2em] text-black transition hover:scale-[1.02]"
+            className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[hsl(22_96%_60%)] to-[hsl(32_95%_72%)] px-6 py-3 text-xs sm:px-8 sm:py-3.5 sm:text-sm font-semibold uppercase tracking-[0.1em] sm:tracking-[0.2em] text-[hsl(23_30%_12%)] btn-glow transition hover:scale-[1.02]"
           >
             Get a structural bid <ArrowUpRight className="size-4" />
           </Link>
@@ -446,7 +446,7 @@ const ExperienceSection = () => (
           </div>
           <Link 
             to="/bid"
-            className="inline-flex items-center justify-center gap-2 rounded-lg bg-black px-6 py-3 text-sm sm:px-8 sm:py-4 sm:text-base font-bold uppercase tracking-[0.15em] sm:tracking-[0.3em] text-white transition hover:scale-[1.02]"
+            className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[hsl(22_96%_60%)] to-[hsl(32_95%_72%)] px-6 py-3 text-sm sm:px-8 sm:py-4 sm:text-base font-bold uppercase tracking-[0.15em] sm:tracking-[0.3em] text-[hsl(23_30%_12%)] btn-glow transition hover:scale-[1.02]"
           >
             Get a structural bid <ArrowUpRight className="size-5" />
           </Link>
@@ -471,8 +471,8 @@ const ServicesSection = ({ activeService, currentService, onChange }: ServicesSe
           title={["Smart solutions for every", { highlight: "project" }]}
           description="Pick your structural challenge. We line up the crews, sequencing, and inspection-ready documents to execute it."
         />
-        <Link to="/bid" className="inline-flex items-center gap-2 text-base font-bold text-white transition hover:text-primary">
-          Get a structural bid <ArrowUpRight className="size-5" />
+        <Link to="/bid" className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[hsl(22_96%_60%)] to-[hsl(32_95%_72%)] px-6 py-3 text-base font-bold uppercase tracking-[0.2em] text-[hsl(23_30%_12%)] btn-glow transition hover:scale-[1.02]">
+          Get a structural bid <ArrowUpRight className="size-4" />
         </Link>
         <div className="divide-y divide-white/10 rounded-[36px] border border-white/10">
           {services.map((service) => (
@@ -509,7 +509,7 @@ const ServicesSection = ({ activeService, currentService, onChange }: ServicesSe
         <div className="flex flex-wrap gap-4">
           <Link 
             to="/bid"
-            className="inline-flex items-center gap-2 rounded-lg bg-white px-7 py-4 text-base font-bold uppercase tracking-[0.25em] text-black transition hover:scale-[1.02]"
+            className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[hsl(22_96%_60%)] to-[hsl(32_95%_72%)] px-7 py-4 text-base font-bold uppercase tracking-[0.25em] text-[hsl(23_30%_12%)] btn-glow transition hover:scale-[1.02]"
           >
             Get a structural bid <ArrowUpRight className="size-5" />
           </Link>
@@ -760,7 +760,7 @@ const FooterSection = () => (
         <Link to="/about" className="inline-flex items-center gap-2 rounded-full border border-black/10 px-5 py-3 text-sm font-semibold transition hover:border-primary">
           About us <ArrowUpRight className="size-4" />
         </Link>
-        <Link to="/bid" className="inline-flex items-center gap-2 rounded-full bg-black px-5 py-3 text-sm font-semibold text-white transition hover:scale-[1.02]">
+        <Link to="/bid" className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[hsl(22_96%_60%)] to-[hsl(32_95%_72%)] px-5 py-3 text-sm font-semibold uppercase tracking-[0.2em] text-[hsl(23_30%_12%)] btn-glow transition hover:scale-[1.02]">
           Get a bid <ArrowUpRight className="size-4" />
         </Link>
       </div>
@@ -831,10 +831,7 @@ const SectionHeading = ({ eyebrow, title, description, align = "left", tone = "l
 const PrimaryCTA = ({ label, dark = false, href = "/bid" }: { label: string; dark?: boolean; href?: string }) => (
   <Link
     to={href}
-    className={cn(
-      "inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition",
-      dark ? "bg-black text-white hover:bg-black/90" : "bg-white text-black hover:scale-[1.02]",
-    )}
+    className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[hsl(22_96%_60%)] to-[hsl(32_95%_72%)] px-6 py-3 text-sm font-semibold uppercase tracking-[0.2em] text-[hsl(23_30%_12%)] btn-glow transition hover:scale-[1.02]"
   >
     {label}
     <ArrowUpRight className="size-4" />

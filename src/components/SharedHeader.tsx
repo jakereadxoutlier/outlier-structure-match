@@ -8,7 +8,7 @@ export const SharedHeader = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-white/10 bg-[#1a1a1a]/98 backdrop-blur-md">
+    <header className="sticky top-0 z-50 border-b border-white/10 bg-[hsl(30_10%_6%)]/98 backdrop-blur-md">
       <div className="relative flex items-center justify-between px-4 py-6 text-sm font-medium uppercase tracking-[0.3em] text-white/70 sm:px-6 lg:px-8">
         {/* Logo - Left Side (both mobile and desktop) */}
         <Link to="/" className="shrink-0 lg:block">
@@ -39,7 +39,7 @@ export const SharedHeader = () => {
           </a>
           <Link 
             to="/bid"
-            className="rounded-lg bg-gradient-to-r from-[hsl(22_96%_60%)] to-[hsl(32_95%_72%)] px-4 py-2.5 sm:px-7 sm:py-3.5 text-xs sm:text-sm font-bold uppercase tracking-[0.25em] sm:tracking-[0.35em] text-[hsl(23_30%_12%)] shadow-[0_12px_32px_hsl(22_96%_40%_/_0.35)] transition hover:scale-[1.02]"
+            className="rounded-lg bg-gradient-to-r from-[hsl(22_96%_60%)] to-[hsl(32_95%_72%)] px-4 py-2.5 sm:px-7 sm:py-3.5 text-xs sm:text-sm font-bold uppercase tracking-[0.25em] sm:tracking-[0.35em] text-[hsl(23_30%_12%)] btn-glow transition hover:scale-[1.02]"
           >
             Get Bid
           </Link>
@@ -48,7 +48,7 @@ export const SharedHeader = () => {
       
       {/* Mobile Menu */}
       {mobileMenuOpen && (
-        <div className="lg:hidden border-t border-white/10 bg-[#1a1a1a] px-4 py-4">
+        <div className="lg:hidden border-t border-white/10 bg-[hsl(30_10%_6%)] px-4 py-4">
           <nav className="flex flex-col gap-4 text-sm">
             <Link to="/" className="text-white/80 transition hover:text-white" onClick={() => setMobileMenuOpen(false)}>Home</Link>
             <Link to="/how-it-works" className="text-white/80 transition hover:text-white" onClick={() => setMobileMenuOpen(false)}>How it works</Link>
