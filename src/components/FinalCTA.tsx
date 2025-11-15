@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Phone, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 export const FinalCTA = () => {
   const scrollToForm = () => {
@@ -33,14 +33,6 @@ export const FinalCTA = () => {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Button
-              size="lg"
-              variant="outline"
-              className="border-slate-700 text-slate-200 hover:border-cyan-400 hover:text-cyan-400 px-8 py-6 text-base"
-            >
-              <Phone className="w-5 h-5 mr-2" />
-              Call (805) 555-0100
-            </Button>
             <Button
               size="lg"
               onClick={scrollToForm}

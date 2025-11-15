@@ -1,4 +1,4 @@
-import { Square, Mail, Phone, MapPin } from "lucide-react";
+import { Square, Mail, MapPin } from "lucide-react";
 
 export const Footer = () => {
   return (
@@ -19,12 +19,8 @@ export const Footer = () => {
             </p>
             <div className="space-y-2">
               <div className="flex items-center gap-2 text-sm text-slate-400">
-                <Phone className="w-4 h-4 text-cyan-400" />
-                <span>(805) 555-0100</span>
-              </div>
-              <div className="flex items-center gap-2 text-sm text-slate-400">
                 <Mail className="w-4 h-4 text-cyan-400" />
-                <span>hello@outlierstructures.com</span>
+                <span>outlierstructures@gmail.com</span>
               </div>
             </div>
           </div>

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Phone, Square } from "lucide-react";
+import { Square } from "lucide-react";
 
 export const Header = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -78,14 +78,6 @@ export const Header = () => {
 
           {/* CTA Buttons */}
           <div className="flex items-center gap-3">
-            <Button
-              variant="outline"
-              size="sm"
-              className="hidden lg:flex items-center gap-2 border-slate-700 text-slate-300 hover:border-cyan-400 hover:text-cyan-400"
-            >
-              <Phone className="w-4 h-4" />
-              <span>(805) 555-0100</span>
-            </Button>
             <Button
               onClick={() => scrollToSection("lead-form")}
               size="sm"

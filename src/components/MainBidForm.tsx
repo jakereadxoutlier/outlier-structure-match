@@ -53,9 +53,6 @@ export const MainBidForm = () => {
             <p className="text-lg text-muted-foreground mb-6">
               A project coordinator from Outlier Structures will review your project details and reach out within one business day.
             </p>
-            <p className="text-sm text-muted-foreground">
-              Have an urgent need? Call us directly at <span className="text-primary font-semibold">(805) 555-0100</span>
-            </p>
           </div>
         </div>
       </section>
@@ -297,7 +294,7 @@ export const MainBidForm = () => {
                   <Input
                     id="main-phone"
                     type="tel"
-                    placeholder="(805) 555-0100"
+                    placeholder="Your phone number"
                     value={formData.phone}
                     onChange={(e) =>
                       setFormData({ ...formData, phone: e.target.value })

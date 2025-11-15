@@ -383,7 +383,7 @@ export const LeadForm = () => {
                             id="phone"
                             type="tel"
                             required
-                            placeholder="(805) 555-0100"
+                            placeholder="Your phone number"
                             value={formData.phone}
                             onChange={(e) =>
                               updateFormData("phone", e.target.value)

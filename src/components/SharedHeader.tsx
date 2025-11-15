@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Mail, Menu, ArrowUpRight } from "lucide-react";
 
-const CONTACT_EMAIL = "hello@outlierstructures.com";
+const CONTACT_EMAIL = "outlierstructures@gmail.com";
 
 export const SharedHeader = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);

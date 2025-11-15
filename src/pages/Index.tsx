@@ -41,8 +41,7 @@ type Testimonial = {
   image: string;
 };
 
-const CONTACT_EMAIL = "hello@outlierstructures.com";
-const CONTACT_PHONE = "(805) 555-0100";
+const CONTACT_EMAIL = "outlierstructures@gmail.com";
 const heroImage = "https://framerusercontent.com/images/FVyQv90OMyWJQAyRfCesHadT8Q.png?width=2400";
 
 const logoPlaceholders = [
@@ -231,10 +230,6 @@ const footerLinks = {
     { label: "Service areas", href: "/service-areas" },
     { label: "About", href: "/about" },
     { label: "Get a bid", href: "/bid" },
-  ],
-  socials: [
-    { label: "Instagram", href: "https://www.instagram.com/" },
-    { label: "LinkedIn", href: "https://linkedin.com" },
   ],
 };
 
@@ -768,23 +763,14 @@ const FooterSection = () => (
     <div className="grid gap-8 text-sm text-white/70 sm:grid-cols-[2fr,1fr]">
       <div className="space-y-3">
         <p>Outlier Structures connects general contractors, developers, and homeowners with vetted structural concrete contractors across Ventura County, Conejo Valley, West San Fernando Valley, and Malibu.</p>
-        <p>{CONTACT_PHONE} • {CONTACT_EMAIL}</p>
+        <p>{CONTACT_EMAIL}</p>
         <p>Serving Thousand Oaks and surrounding areas</p>
       </div>
-      <div className="grid gap-3 sm:grid-cols-2">
+      <div className="grid gap-3">
         <div>
           {footerLinks.nav.map((item) => (
             <p key={item.label}>
               <Link to={item.href} className="transition hover:text-primary">{item.label}</Link>
-            </p>
-          ))}
-        </div>
-        <div>
-          {footerLinks.socials.map((social) => (
-            <p key={social.label}>
-              <a href={social.href} target="_blank" rel="noreferrer" className="transition hover:text-primary">
-                {social.label}
-              </a>
             </p>
           ))}
         </div>

@@ -216,7 +216,7 @@ export const Hero = () => {
                       <Input
                         id="phone"
                         type="tel"
-                        placeholder="(805) 555-0100"
+                        placeholder="Your phone number"
                         value={formData.phone}
                         onChange={(e) =>
                           setFormData({ ...formData, phone: e.target.value })
