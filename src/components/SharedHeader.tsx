@@ -7,10 +7,10 @@ export const SharedHeader = () => {
 
   return (
     <header className="sticky top-0 z-50 border-b border-white/10 bg-[hsl(30_10%_6%)]/98 backdrop-blur-md">
-      <div className="relative flex items-center justify-between px-4 py-1 text-sm font-medium uppercase tracking-[0.3em] text-white/70 sm:px-6 lg:px-8">
+      <div className="relative flex items-center justify-between px-4 py-0 text-sm font-medium uppercase tracking-[0.3em] text-white/70 sm:px-6 lg:px-8">
         {/* Logo - Left Side (both mobile and desktop) */}
         <Link to="/" className="shrink-0 lg:block">
-          <img src="/outlier-logo.svg" alt="Outlier Structures" className="h-20 sm:h-24 lg:h-28 w-auto opacity-90 hover:opacity-100 transition-opacity" />
+          <img src="/outlier-logo.svg" alt="Outlier Structures" className="h-20 sm:h-22 lg:h-24 w-auto opacity-90 hover:opacity-100 transition-opacity" />
         </Link>
         
         {/* Center - Mobile Hamburger, Desktop Nav */}
