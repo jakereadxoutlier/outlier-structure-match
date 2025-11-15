@@ -54,10 +54,10 @@ const logoPlaceholders = [
 ];
 
 const statHighlights: { icon: LucideIcon; value: string; label: string; isNumeric?: boolean; hideIcon?: boolean }[] = [
-  { icon: Building2, value: "$200k-$5M", label: "Project range", isNumeric: false },
-  { icon: Users, value: "Elite", label: "Contractor network", isNumeric: false },
+  { icon: Building2, value: "$200k-$5M", label: "Project range", isNumeric: false, hideIcon: true },
+  { icon: Users, value: "Elite", label: "Contractor network", isNumeric: false, hideIcon: true },
   { icon: TrendingUp, value: "Ultra-luxury", label: "Specialization", isNumeric: false, hideIcon: true },
-  { icon: MapPin, value: "5 regions", label: "Coverage area", isNumeric: true },
+  { icon: MapPin, value: "5 regions", label: "Coverage area", isNumeric: true, hideIcon: true },
 ];
 
 const services: Service[] = [
