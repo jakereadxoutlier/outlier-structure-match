@@ -48,7 +48,7 @@ export const SharedHeader = () => {
       
       {/* Mobile Menu */}
       {mobileMenuOpen && (
-        <div className="lg:hidden border-t border-white/10 bg-[hsl(30_10%_6%)] px-4 py-4">
+        <div className="lg:hidden border-t border-white/10 bg-[hsl(30_10%_6%)] px-4 py-1">
           <nav className="flex flex-col gap-4 text-sm">
             <Link to="/" className="text-white/80 transition hover:text-white" onClick={() => setMobileMenuOpen(false)}>Home</Link>
             <Link to="/how-it-works" className="text-white/80 transition hover:text-white" onClick={() => setMobileMenuOpen(false)}>How it works</Link>

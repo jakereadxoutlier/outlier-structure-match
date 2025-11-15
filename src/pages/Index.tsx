@@ -265,7 +265,7 @@ const Index = () => {
       
       <div className="relative">
         <HeroSection />
-        <PartnerStrip />
+        {/* <PartnerStrip /> */}
         
         <div className="relative mx-auto flex max-w-6xl flex-col gap-12 sm:gap-16 md:gap-20 px-4 pb-16 pt-12 sm:pb-24 sm:pt-20 sm:px-6 lg:px-0">
           <ExperienceSection />
