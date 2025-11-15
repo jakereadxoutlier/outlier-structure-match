@@ -2,8 +2,6 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Mail, Menu, ArrowUpRight } from "lucide-react";
 
-const CONTACT_EMAIL = "outlierstructures@gmail.com";
-
 export const SharedHeader = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -34,9 +32,9 @@ export const SharedHeader = () => {
         
         {/* Right Side Actions */}
         <div className="flex items-center gap-4 sm:gap-6">
-          <a href={`mailto:${CONTACT_EMAIL}`} className="hidden sm:block text-white/80 transition hover:text-white" aria-label="Email us">
+          <Link to="/bid" className="hidden sm:block text-white/80 transition hover:text-white" aria-label="Get a bid">
             <Mail className="size-7" />
-          </a>
+          </Link>
           <Link 
             to="/bid"
             className="rounded-lg bg-gradient-to-r from-[hsl(22_96%_60%)] to-[hsl(32_95%_72%)] px-4 py-2.5 sm:px-7 sm:py-3.5 text-xs sm:text-sm font-bold uppercase tracking-[0.25em] sm:tracking-[0.35em] text-[hsl(23_30%_12%)] btn-glow transition hover:scale-[1.02]"

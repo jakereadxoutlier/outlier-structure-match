@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Square, Mail, MapPin } from "lucide-react";
 
 export const Footer = () => {
@@ -18,10 +19,10 @@ export const Footer = () => {
               structural concrete crews throughout Southern California.
             </p>
             <div className="space-y-2">
-              <div className="flex items-center gap-2 text-sm text-slate-400">
+              <Link to="/bid" className="flex items-center gap-2 text-sm text-slate-400 hover:text-cyan-400 transition">
                 <Mail className="w-4 h-4 text-cyan-400" />
                 <span>outlierstructures@gmail.com</span>
-              </div>
+              </Link>
             </div>
           </div>
 

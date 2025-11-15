@@ -763,7 +763,9 @@ const FooterSection = () => (
     <div className="grid gap-8 text-sm text-white/70 sm:grid-cols-[2fr,1fr]">
       <div className="space-y-3">
         <p>Outlier Structures connects general contractors, developers, and homeowners with vetted structural concrete contractors across Ventura County, Conejo Valley, West San Fernando Valley, and Malibu.</p>
-        <p>{CONTACT_EMAIL}</p>
+        <p>
+          <Link to="/bid" className="transition hover:text-primary">{CONTACT_EMAIL}</Link>
+        </p>
         <p>Serving Thousand Oaks and surrounding areas</p>
       </div>
       <div className="grid gap-3">
