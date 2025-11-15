@@ -1,73 +1,86 @@
-# Welcome to your Lovable project
+# Outlier Structures Website
 
-## Project info
+Outlier Structures connects ultra-luxury custom home projects and commercial developments with elite structural concrete contractors across Ventura County, Conejo Valley, West San Fernando Valley, Malibu, and Topanga.
 
-**URL**: https://lovable.dev/projects/3e490159-6578-438e-a3ae-1032ee54294f
-
-## How can I edit this code?
-
-There are several ways of editing your application.
-
-**Use Lovable**
-
-Simply visit the [Lovable Project](https://lovable.dev/projects/3e490159-6578-438e-a3ae-1032ee54294f) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
-
-**Edit a file directly in GitHub**
-
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
+## Project Stack
 
 This project is built with:
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+- **Vite** - Fast build tool and dev server
+- **TypeScript** - Type-safe JavaScript
+- **React** - UI framework
+- **React Router** - Client-side routing
+- **shadcn-ui** - High-quality React components
+- **Tailwind CSS** - Utility-first CSS framework
+- **Framer Motion** - Animation library
 
-## How can I deploy this project?
+## Local Development
 
-Simply open [Lovable](https://lovable.dev/projects/3e490159-6578-438e-a3ae-1032ee54294f) and click on Share -> Publish.
+### Prerequisites
 
-## Can I connect a custom domain to my Lovable project?
+- Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
 
-Yes, you can!
+### Getting Started
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+```sh
+# Install dependencies
+npm install
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+# Start the development server
+npm run dev
+
+# Build for production
+npm run build
+
+# Preview production build
+npm run preview
+
+# Run linter
+npm run lint
+```
+
+The development server will start at `http://localhost:8080`
+
+## Project Structure
+
+```
+├── public/             # Static assets
+├── src/
+│   ├── components/     # React components
+│   │   └── ui/        # shadcn-ui components
+│   ├── hooks/         # Custom React hooks
+│   ├── lib/           # Utility functions
+│   ├── pages/         # Page components
+│   ├── App.tsx        # Main app component
+│   ├── index.css      # Global styles
+│   └── main.tsx       # Entry point
+├── index.html         # HTML template
+└── vite.config.ts     # Vite configuration
+```
+
+## Features
+
+- Ultra-luxury structural concrete project matching
+- Elite contractor network ($200k-$5M projects)
+- Multi-page application with React Router
+- HighLevel CRM integration for lead capture
+- Responsive design for all devices
+- SEO optimized with meta tags
+- Custom SVG logo and branding
+
+## Deployment
+
+This project can be deployed to any static hosting service:
+
+- **Vercel** (recommended)
+- **Netlify**
+- **GitHub Pages**
+- **AWS S3 + CloudFront**
+
+The `vercel.json` file is included for proper SPA routing on Vercel.
+
+## Contact
+
+**Email:** outlierstructures@gmail.com
+
+**Service Areas:** Ventura County, Conejo Valley, West San Fernando Valley, Malibu, Topanga
